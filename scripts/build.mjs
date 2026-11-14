@@ -23,10 +23,11 @@ function write(pathname, html) {
 }
 const fmt = (d) => new Date(d).toLocaleDateString('en-IN', { day: 'numeric', month: 'long', year: 'numeric', timeZone: 'Asia/Kolkata' });
 const taken = new Set(fs.readdirSync(path.join(ROOT, 'public')).map((f) => f.replace(/\.html$/, '')).concat(['blog', 'media', 'assets', 'api']));
-const posts = loadPosts().filter((p) => p.path && p.title && p.html).map((p) => (taken.has(p.path.split('/')[0]) && !p.path.startsWith('blog/') ? { ...p, path: 'blog/' + p.slug } : p));
+const noDash = (t) => String(t || '').replace(/\s*(\u2014|&mdash;|&#8212;|&#x2014;)\s*/gi, ', ');
+const posts = loadPosts().filter((p) => p.path && p.title && p.html).map((p) => ({ ...p, title: noDash(p.title), excerpt: noDash(p.excerpt), html: noDash(p.html) })).map((p) => (taken.has(p.path.split('/')[0]) && !p.path.startsWith('blog/') ? { ...p, path: 'blog/' + p.slug } : p));
 
 // ---- blog index
-const cards = posts.map((p) => `
+const card = (p) => `
       <a class="card" href="/${p.path}" style="display: flex; flex-direction: column; border-radius: 24px; overflow: hidden; background: #FFFFFF; border: 1px solid #C9D4EE">
         ${p.image ? `<img src="${esc(p.image)}" alt="" loading="lazy" decoding="async" style="display: block; width: 100%; aspect-ratio: 16 / 10; object-fit: cover; background: #D5E2FF">` : `<div style="aspect-ratio: 16 / 10; background: #1B3BFF; color: #FFFFFF; display: flex; align-items: flex-end; padding: 22px; ${SERIF} font-size: 30px; line-height: 1.05">${esc(p.title)}</div>`}
         <div style="padding: 22px; display: flex; flex-direction: column; gap: 10px; flex: 1">
@@ -34,7 +35,8 @@ const cards = posts.map((p) => `
           <h2 style="margin: 0; font-size: 23px; font-weight: 800; letter-spacing: -0.02em; line-height: 1.15">${esc(p.title)}</h2>
           <p style="margin: 0; font-size: 15.5px; line-height: 1.55; color: #3D4C70">${esc(p.excerpt || '')}</p>
         </div>
-      </a>`).join('');
+      </a>`;
+const cards = posts.map(card).join('');
 const blogMain = `<section>
   <div style="max-width: 1200px; margin: 0 auto; padding: 56px clamp(20px, 4vw, 40px) 88px; display: flex; flex-direction: column; gap: 40px">
     <div style="display: flex; flex-direction: column; gap: 24px">
@@ -50,12 +52,19 @@ write('blog', render({ title: 'Blog | Da Sachin Sharma on AI, Brands and Creativ
   jsonld: { '@context': 'https://schema.org', '@type': 'Blog', '@id': URL_ + 'blog#blog', url: URL_ + 'blog', name: 'Da Sachin Sharma, Blog', author: { '@id': URL_ + '#person' },
     blogPost: posts.slice(0, 50).map((p) => ({ '@type': 'BlogPosting', headline: p.title, url: URL_ + p.path, datePublished: p.date })) } }));
 
+// ---- latest writing on the home page
+const homeFile = path.join(DIST, 'index.html');
+if (posts.length && fs.existsSync(homeFile)) {
+  const h = fs.readFileSync(homeFile, 'utf8');
+  if (h.includes('<!--LATEST-->')) fs.writeFileSync(homeFile, h.replace('<!--LATEST-->', posts.slice(0, 3).map(card).join('')).replace('data-latest hidden', 'data-latest'));
+}
+
 // ---- posts
 posts.forEach((p, i) => {
   const next = posts[i + 1];
   const main = `<article>
   <div style="max-width: 820px; margin: 0 auto; padding: 48px clamp(20px, 4vw, 40px) 88px; display: flex; flex-direction: column; gap: 28px">
-    <a href="/blog" style="${MONO} font-size: 12px; letter-spacing: 0.12em; text-transform: uppercase">← All posts</a>
+    <a href="/blog" style="${MONO} font-size: 12px; letter-spacing: 0.12em; text-transform: uppercase">All posts</a>
     <div style="${MONO} font-size: 12px; letter-spacing: 0.12em; text-transform: uppercase; color: #3D4C70">${fmt(p.date)}${(p.tags || []).length ? ' · ' + esc(p.tags.slice(0, 3).join(' · ')) : ''}</div>
     <h1 style="margin: 0; font-size: clamp(36px, 5vw, 64px); line-height: 1.02; font-weight: 800; letter-spacing: -0.04em; text-wrap: balance">${esc(p.title)}</h1>
     <div style="font-size: 16px; color: #3D4C70">By <a href="/about" style="font-weight: 600">Da Sachin Sharma</a></div>

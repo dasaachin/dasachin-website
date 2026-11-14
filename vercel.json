@@ -1,12 +1,9 @@
 {
+  "buildCommand": "node scripts/build.mjs",
+  "outputDirectory": "dist",
+  "framework": null,
   "cleanUrls": true,
   "trailingSlash": false,
-  "rewrites": [
-    {
-      "source": "/blog/medium/:slug",
-      "destination": "/api/post?slug=:slug"
-    }
-  ],
   "redirects": [
     {
       "source": "/about-me",
@@ -29,7 +26,7 @@
       "permanent": false
     },
     {
-      "source": "/:y(\\d{4})/:m(\\d{2})/:d(\\d{2})/:slug",
+      "source": "/blog/medium/:slug",
       "destination": "/blog",
       "permanent": false
     }

@@ -71,8 +71,8 @@ def phero(eb,a,b,lead):
 </section>
 '''
 GRID='display: grid; grid-template-columns: repeat(auto-fit, minmax(min(320px, 100%), 1fr)); gap: 20px'
-writing=f'''<!-- LATEST WRITING (filled from Medium) -->
-<section data-medium-wrap hidden style="background: #FFFFFF; border-top: 1px solid #DCE4F5">
+writing=f'''<!-- LATEST WRITING (filled by scripts/build.mjs) -->
+<section data-latest hidden style="background: #FFFFFF; border-top: 1px solid #DCE4F5">
   <div style="max-width: 1200px; margin: 0 auto; padding: 88px clamp(20px, 4vw, 40px); display: flex; flex-direction: column; gap: 36px">
     <div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-end; gap: 24px">
       <div style="display: flex; flex-direction: column; gap: 18px">
@@ -81,7 +81,7 @@ writing=f'''<!-- LATEST WRITING (filled from Medium) -->
       </div>
       <a href="/blog" style="font-weight: 600; font-size: 16px">All articles</a>
     </div>
-    <div data-medium="3" style="{GRID}"></div>
+    <div style="{GRID}"><!--LATEST--></div>
   </div>
 </section>
 
@@ -130,8 +130,6 @@ page('about','About Da Sachin Sharma | AI Trainer, Coach and Consultant','Da Sac
      phero('About','Da Sachin','Sharma.','AI trainer, coach and consultant. Founder of X DOT AI, Guest Faculty at IICT Mumbai and author of five books.')+S['about']+S['method']+S['proof']+S['cta'],typ='AboutPage')
 page('books','Books by Da Sachin Sharma | Prompt DOT AI, Creativity DOT AI','Books by Da Sachin Sharma: Prompt DOT AI, Creativity DOT AI and The Warrior Who Put Down His Bow, plus fiction and Hindi poetry.',
      phero('Books','Five books,','three on AI.','From the craft of prompting to a fable about what happens when everything you are good at stops mattering.')+S['books']+also+S['cta'],extra=books)
-page('blog','Blog | Da Sachin Sharma on AI, Brands and Creative Work','Articles by Da Sachin Sharma on generative AI, AI training, brands and creative work. Updated automatically from Medium.',
-     phero('Blog','Notes on AI, brands and','creative work.','What I am learning from training teams and building with AI. New articles appear here automatically when I publish on Medium.')+blog_sec+S['cta'],typ='Blog')
 # contact: rebuild with new chrome
 c=open(P+'contact.html').read()
 ct='Contact Da Sachin Sharma | AI Training, Coaching and Consulting'; cd='Tell Da Sachin Sharma the real problem you want AI to solve. Enquire about AI training for teams, consulting for managements, coaching for leaders or custom AI tools.'
@@ -139,35 +137,30 @@ write('contact.html',mkhead(ct,cd,'contact',wp(ct,cd,'contact','ContactPage'))+O
 # ---------- css
 css2=open(OUT+'/assets/site.css').read()+""".mnav{display:none;position:static}.mnav summary{cursor:pointer}.mnav a:hover{background:#E7EEFF}
 @media (max-width:760px){.mnav{display:block}}
+.prose iframe{display:block;width:100%;aspect-ratio:16/9;border:0;border-radius:16px;margin:2em 0}
+.card{color:#0A1A3F;text-decoration:none;transition:transform .25s ease,box-shadow .25s ease}.card:hover{color:#0A1A3F;transform:translateY(-6px);box-shadow:0 28px 50px -28px rgba(10,26,63,.45)}
 .post{font-size:19px;line-height:1.7;color:#1F2D4F}.post p{margin:0 0 1.2em}.post h2,.post h3,.post h4{margin:1.8em 0 .5em;color:#0A1A3F;letter-spacing:-.02em;line-height:1.15}.post h2{font-size:32px}.post h3{font-size:26px}.post h4{font-size:21px}
 .post img{display:block;max-width:100%;height:auto;border-radius:16px;margin:0 auto}.post figure{margin:2em 0}.post figcaption{margin-top:10px;font-size:14px;color:#3D4C70;text-align:center}
 .post blockquote{margin:1.6em 0;padding:4px 0 4px 22px;border-left:3px solid #1B3BFF;font-family:"Instrument Serif",Georgia,serif;font-size:26px;line-height:1.3;color:#0A1A3F}
 .post ul,.post ol{margin:0 0 1.2em;padding-left:1.3em}.post li{margin:.35em 0}.post pre{overflow-x:auto;padding:18px;border-radius:14px;background:#061230;color:#fff;font-size:15px}.post hr{border:none;border-top:1px solid #C9D4EE;margin:2.4em 0}.post a{text-underline-offset:3px}
+.prose{font-size:19px;line-height:1.7;color:#1F2D4F}.prose p{margin:0 0 1.2em}.prose h2,.prose h3,.prose h4{margin:1.8em 0 .5em;color:#0A1A3F;letter-spacing:-.02em;line-height:1.15}.prose h2{font-size:32px}.prose h3{font-size:26px}.prose h4{font-size:21px}
+.prose img{display:block;max-width:100%;height:auto;border-radius:16px;margin:0 auto}.prose figure{margin:2em 0}.prose figcaption{margin-top:10px;font-size:14px;color:#3D4C70;text-align:center}
+.prose blockquote{margin:1.6em 0;padding:4px 0 4px 22px;border-left:3px solid #1B3BFF;font-family:"Instrument Serif",Georgia,serif;font-size:26px;line-height:1.3;color:#0A1A3F}
+.prose ul,.prose ol{margin:0 0 1.2em;padding-left:1.3em}.prose li{margin:.35em 0}.prose pre{overflow-x:auto;padding:18px;border-radius:14px;background:#061230;color:#fff;font-size:15px}.prose hr{border:none;border-top:1px solid #C9D4EE;margin:2.4em 0}.prose a{text-underline-offset:3px}
 """
 open(OUT+'/assets/site.css','w').write(css2)
-# ---------- serverless functions + layout
-os.makedirs(OUT+'/api',exist_ok=True)
-for f in ('_feed.js','medium.js','post.js'): shutil.copy(P+'api/'+f,OUT+'/api/'+f)
-lh=mkhead('%%TITLE%%','%%DESC%%','%%PATH%%',{})
-lh=lh.replace('<link rel="canonical" href="'+URL+'%%PATH%%">','<link rel="canonical" href="%%CANON%%">').replace('<meta property="og:url" content="'+URL+'%%PATH%%">','<meta property="og:url" content="%%CANON%%">').replace('content="index, follow, max-image-preview:large, max-snippet:-1"','content="%%ROBOTS%%"').replace('content="'+URL+'assets/og.jpg"','content="%%IMAGE%%"')
-lh=LD_RE.sub('<script type="application/ld+json">%%LD%%</script>',lh)
-for tok in ('%%TITLE%%','%%DESC%%','%%CANON%%','%%ROBOTS%%','%%IMAGE%%','%%LD%%'): assert tok in lh, tok
-open(OUT+'/api/_layout.js','w').write('// Generated by the site build. Shared page shell for server-rendered articles.\nconst HEAD='+json.dumps(lh)+';\nconst OPEN='+json.dumps(OPEN)+';\nconst CLOSE='+json.dumps(CLOSE+TAIL)+''';
-const esc = (s) => String(s == null ? '' : s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
-exports.page = (o) => HEAD
-  .replace(/%%TITLE%%/g, () => esc(o.title)).replace(/%%DESC%%/g, () => esc(o.desc))
-  .replace(/%%CANON%%/g, () => esc(o.canonical)).replace(/%%ROBOTS%%/g, () => o.robots || 'index, follow, max-image-preview:large')
-  .replace(/%%IMAGE%%/g, () => esc(o.image || 'https://dasachin.com/assets/og.jpg'))
-  .replace(/%%LD%%/g, () => JSON.stringify(o.ld || {}).replace(/</g, '\\\\u003c'))
-  + OPEN + o.body + CLOSE;
-''')
-# ---------- vercel config, sitemap, llms
-open(OUT+'/vercel.json','w').write(json.dumps({"cleanUrls":True,"trailingSlash":False,
- "rewrites":[{"source":"/blog/medium/:slug","destination":"/api/post?slug=:slug"}],
- "redirects":[{"source":"/about-me","destination":"/about","permanent":True},{"source":"/publications","destination":"/books","permanent":True},{"source":"/category/:c*","destination":"/blog","permanent":False},{"source":"/page/:n","destination":"/blog","permanent":False},{"source":"/:y(\\d{4})/:m(\\d{2})/:d(\\d{2})/:slug","destination":"/blog","permanent":False}]},indent=2)+'\n')
-open(OUT+'/.vercelignore','w').write('README.md\n_src\n')
-sm=['<url><loc>%s</loc><lastmod>2026-11-15</lastmod><priority>%s</priority></url>'%(URL+p,pr) for p,pr in [('','1.0'),('services','0.9'),('about','0.8'),('books','0.7'),('blog','0.8'),('contact','0.8')]]
-open(OUT+'/sitemap.xml','w').write('<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n  '+'\n  '.join(sm)+'\n</urlset>\n')
+# ---------- page template for scripts/build.mjs (blog index and posts)
+th=mkhead('%%TITLE%%','%%DESC%%','%%PATH%%',{})
+th=th.replace('<meta property="og:type" content="website">','<meta property="og:type" content="%%OGTYPE%%">').replace('content="'+URL+'assets/og.jpg"','content="%%OGIMAGE%%"')
+th=LD_RE.sub('<script type="application/ld+json">\n%%JSONLD%%\n</script>',th)
+for tok in ('%%TITLE%%','%%DESC%%','%%PATH%%','%%OGTYPE%%','%%OGIMAGE%%','%%JSONLD%%'): assert tok in th, tok
+TEMPLATE=th+OPEN+'%%MAIN%%\n'+S['cta']+CLOSE+TAIL
+VERCEL=json.dumps({"buildCommand":"node scripts/build.mjs","outputDirectory":"dist","framework":None,"cleanUrls":True,"trailingSlash":False,
+ "redirects":[{"source":"/about-me","destination":"/about","permanent":True},{"source":"/publications","destination":"/books","permanent":True},{"source":"/category/:c*","destination":"/blog","permanent":False},{"source":"/page/:n","destination":"/blog","permanent":False},{"source":"/blog/medium/:slug","destination":"/blog","permanent":False}]},indent=2)+'\n'
+for f in ('vercel.json','.vercelignore','sitemap.xml','.nojekyll','blog.html'):
+    if os.path.exists(OUT+'/'+f): os.remove(OUT+'/'+f)
+shutil.rmtree(OUT+'/api',ignore_errors=True)
 ll=open(OUT+'/llms.txt').read().replace('## Contact\n','## Pages\n- Services: https://dasachin.com/services\n- About: https://dasachin.com/about\n- Books: https://dasachin.com/books\n- Blog: https://dasachin.com/blog\n- Medium: https://medium.com/@dasachin\n\n## Contact\n')
 open(OUT+'/llms.txt','w').write(ll)
+open('/home/claude/gen/site/_template.html','w').write(TEMPLATE); open('/home/claude/gen/site/_vercel.json','w').write(VERCEL)
 print('pages',PAGES,{k:len(v) for k,v in S.items()})

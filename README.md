@@ -2,25 +2,22 @@
 
 Static website for Da Sachin Sharma: AI trainer, coach and consultant. No build step. Plain HTML, CSS and JavaScript.
 
-## Pages
+## How it is built
 
-Home, `/services`, `/about`, `/books`, `/blog`, `/contact`.
+- `public/`: the fixed pages (home, services, about, books, contact) and `assets/`
+- `content/posts/`: one JSON file per blog post; `content/media/`: their images
+- `templates/page.html`: the page shell used for the blog index and every post
+- `scripts/build.mjs`: Vercel runs this on every push. It copies `public/` into `dist/`, then renders `/blog`, every post, the home page's "Latest writing" cards, `sitemap.xml` and `feed.xml`
 
 ## Blog and Medium
 
-`/blog` and the home page list the latest Medium articles automatically. `api/medium.js` reads the Medium RSS feed of `@dasachin` (about the 10 most recent articles) and caches it for 30 minutes. Each article also opens inside the site at `/blog/medium/<slug>`, with its canonical link pointing to Medium. To change the Medium account, edit `FEED` in `api/_feed.js`.
-
-## Files
-
-- `index.html`: the whole page, with SEO meta tags and schema.org data (Person, Organization, ProfessionalService, FAQPage, Book)
-- `assets/site.css`, `assets/site.js`: styles, particle hero, the "Wire the workflow" puzzle and the "Decision Room" game
-- `assets/`: portrait, book covers, share image (`og.jpg`), favicon
-- `robots.txt`, `sitemap.xml`, `llms.txt`: for search engines and AI answer engines
-- `404.html`: not-found page
+- `scripts/sync-medium.mjs` runs every 6 hours on GitHub Actions (`.github/workflows/sync-medium.yml`). It reads the Medium feed of `@dasachin`, saves any new story and its images into `content/`, and commits. That commit triggers a Vercel deploy, so new Medium stories appear on the site without any manual step.
+- `scripts/import-wordpress.mjs` is a one-time import of the old WordPress posts (`.github/workflows/import-wordpress.yml`). Imported posts keep their original URLs.
+- To run either by hand: GitHub, Actions tab, pick the workflow, "Run workflow".
 
 ## Go live
 
-1. Connect this repository to a static host (Netlify, Vercel, Cloudflare Pages or GitHub Pages). Build command: none. Publish directory: the repository root.
+1. The repository is connected to Vercel. Build command and output folder are set in `vercel.json`.
 2. Open the temporary URL the host gives you and check the site.
 3. Add `dasachin.com` as a custom domain in the host, then update the DNS records at your domain registrar exactly as the host shows.
 4. After the domain works, add the site in Google Search Console and Bing Webmaster Tools and submit `https://dasachin.com/sitemap.xml`.

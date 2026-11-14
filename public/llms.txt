@@ -52,6 +52,7 @@ Both. Every engagement starts with a conversation with the decision makers, then
 - About: https://dasachin.com/about
 - Books: https://dasachin.com/books
 - Blog: https://dasachin.com/blog
+- Medium: https://medium.com/@dasachin
 
 ## Contact
 - Email: dasachin@xdotai.in
