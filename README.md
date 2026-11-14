@@ -24,3 +24,7 @@ The current dasachin.com is a WordPress blog. Once DNS points here, the old blog
 ## Still to add
 
 Hidden until supplied: a photo of a live training (hero), a 60 to 90 second showreel, client quotes, and training formats in the FAQ.
+
+## Contact form
+
+`contact.html` posts enquiries to FormSubmit (formsubmit.co), which forwards them to dasachin@xdotai.in. The first message ever sent triggers a one-time activation email from FormSubmit to that inbox; click the link in it, and every later enquiry is delivered normally. To change the receiving address, edit `ENDPOINT` in `assets/site.js`.

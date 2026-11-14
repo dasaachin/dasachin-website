@@ -330,4 +330,37 @@
     });
     reset(); render();
   })();
+  /* ---------- contact form ---------- */
+  (function () {
+    var form = $('contact-form');
+    if (!form) { return; }
+    var ENDPOINT = 'https://formsubmit.co/ajax/dasachin@xdotai.in';
+    var err = $('contact-error'), btn = $('contact-send'), done = $('contact-done');
+    function fail(msg) { err.textContent = msg; err.hidden = false; btn.disabled = false; btn.textContent = 'Send message'; }
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      err.hidden = true;
+      var f = form.elements, bad = null;
+      ['name', 'email', 'company', 'message'].forEach(function (k) {
+        var el = f[k], ok = el.value.trim().length > 0 && (k !== 'email' || /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(el.value.trim()));
+        el.setAttribute('aria-invalid', ok ? 'false' : 'true');
+        if (!ok && !bad) { bad = el; }
+      });
+      if (bad) { fail(bad.name === 'email' ? 'Please enter a valid work email.' : 'Please fill in your name, work email, company and the problem.'); bad.focus(); return; }
+      if (f._honey.value) { form.hidden = true; done.hidden = false; return; }
+      btn.disabled = true; btn.textContent = 'Sending...';
+      var data = {
+        name: f.name.value.trim(), email: f.email.value.trim(), company: f.company.value.trim(), role: f.role.value.trim(),
+        phone: f.phone.value.trim(), team_size: f.team_size.value, need: f.need.value, message: f.message.value.trim(),
+        _subject: 'dasachin.com enquiry: ' + f.need.value + ' (' + f.company.value.trim() + ')', _template: 'table', _captcha: 'false'
+      };
+      fetch(ENDPOINT, { method: 'POST', headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' }, body: JSON.stringify(data) })
+        .then(function (r) { return r.json().then(function (j) { return { ok: r.ok, j: j }; }); })
+        .then(function (res) {
+          if (res.ok && String(res.j.success) === 'true') { form.hidden = true; done.hidden = false; done.focus(); done.scrollIntoView({ block: 'center' }); }
+          else { fail('The message could not be sent. Please try again in a minute, or reach me on LinkedIn.'); }
+        })
+        .catch(function () { fail('The message could not be sent. Please check your connection and try again, or reach me on LinkedIn.'); });
+    });
+  })();
 })();

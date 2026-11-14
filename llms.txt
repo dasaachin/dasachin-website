@@ -9,7 +9,7 @@
 - Guest Faculty at IICT Mumbai
 - 18+ years in brands, advertising and film; 200+ Indian brands built, rebranded and scaled
 - 1000+ professionals trained to use AI at work
-- Directed Meri Coffee, India's first AI-generated song; 100+ AI commercial video projects delivered
+- 100+ AI commercial video projects delivered
 
 ## Services
 - AI training for teams
@@ -20,8 +20,11 @@
 ## Method
 Problem first, solution second. Four steps: Diagnose, Define, Design, Deploy.
 
-## Trained and built for
-Zee Entertainment, Saregama, EPAM, Shemaroo Entertainment, Cinevistaa, IICT Mumbai, Zudio
+## AI training and team building
+Zee Entertainment, Saregama, EPAM, Shemaroo Entertainment
+
+## Other clients and brands worked with
+Starbucks, Reliance Life Insurance, VML, Zudio, ACwO, Mobilla, Cinevistaa, IICT Mumbai
 
 ## Books
 - Prompt DOT AI: the art of writing generative AI prompts (2026 edition)
@@ -47,4 +50,5 @@ Both. Every engagement starts with a conversation with the decision makers, then
 ## Contact
 - Email: dasachin@xdotai.in
 - LinkedIn: https://www.linkedin.com/in/dasachin/
+- Contact form: https://dasachin.com/contact
 - Website: https://dasachin.com/
