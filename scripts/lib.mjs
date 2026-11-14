@@ -49,8 +49,16 @@ export function sanitize(html = '') {
   return h.trim();
 }
 
+const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
+// The Internet Archive rate-limits hard: go slowly there and retry when told to wait.
 export async function get(url, type = 'text') {
-  const r = await fetch(url, { headers: { 'User-Agent': UA, Accept: '*/*' }, redirect: 'follow' });
+  const slow = String(url).includes('web.archive.org');
+  let r;
+  for (let attempt = 1; attempt <= (slow ? 6 : 1); attempt++) {
+    if (slow) await sleep(attempt === 1 ? 4000 : 25000 * (attempt - 1));
+    r = await fetch(url, { headers: { 'User-Agent': UA, Accept: '*/*' }, redirect: 'follow' });
+    if (!(slow && (r.status === 429 || r.status === 503 || r.status === 504))) break;
+  }
   if (!r.ok) throw new Error(`${r.status} ${r.statusText} for ${url}`);
   if (type === 'json') return { data: await r.json(), headers: r.headers };
   if (type === 'buffer') return { data: Buffer.from(await r.arrayBuffer()), headers: r.headers };
