@@ -363,4 +363,41 @@
         .catch(function () { fail('The message could not be sent. Please check your connection and try again, or reach me on LinkedIn.'); });
     });
   })();
+  /* ---------- latest writing from Medium ---------- */
+  (function () {
+    var box = document.querySelector('[data-medium]');
+    if (!box) { return; }
+    var limit = parseInt(box.getAttribute('data-medium'), 10) || 12;
+    var wrap = document.querySelector('[data-medium-wrap]'), empty = document.querySelector('[data-medium-empty]');
+    function el(tag, css, text) { var e = document.createElement(tag); if (css) { e.style.cssText = css; } if (text != null) { e.textContent = text; } return e; }
+    var MONO = "font-family:'JetBrains Mono',ui-monospace,monospace;";
+    function none() { box.textContent = ''; if (empty) { empty.hidden = false; } else if (wrap) { wrap.hidden = true; } }
+    fetch('/api/medium').then(function (r) { return r.ok ? r.json() : { items: [] }; }).then(function (j) {
+      var items = (j.items || []).slice(0, limit);
+      if (!items.length) { none(); return; }
+      box.textContent = '';
+      items.forEach(function (it) {
+        var a = el('a', 'display:flex;flex-direction:column;border-radius:24px;overflow:hidden;background:#FFFFFF;border:1px solid #C9D4EE;color:#0A1A3F;text-decoration:none');
+        a.href = it.url; a.className = 'lift';
+        var top = el('div', 'aspect-ratio:16/9;background:#1B3BFF;display:flex;align-items:flex-end;padding:20px;overflow:hidden;position:relative');
+        if (it.image) {
+          var im = el('img', 'position:absolute;inset:0;width:100%;height:100%;object-fit:cover');
+          im.src = it.image; im.alt = ''; im.loading = 'lazy'; im.decoding = 'async';
+          im.addEventListener('error', function () { im.remove(); });
+          top.appendChild(im);
+        } else {
+          top.appendChild(el('span', "font-family:'Instrument Serif',Georgia,serif;font-style:italic;font-size:64px;line-height:1;color:#FFFFFF", (it.title || 'A').charAt(0)));
+        }
+        a.appendChild(top);
+        var body = el('div', 'display:flex;flex-direction:column;gap:12px;padding:24px;flex:1');
+        body.appendChild(el('div', 'font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:#3D4C70;' + MONO, [it.dateText, it.minutes ? it.minutes + ' min read' : ''].filter(Boolean).join(' · ')));
+        body.appendChild(el('h3', 'margin:0;font-size:24px;font-weight:800;letter-spacing:-.02em;line-height:1.12', it.title));
+        body.appendChild(el('p', 'margin:0;font-size:15.5px;line-height:1.55;color:#3D4C70', it.excerpt));
+        body.appendChild(el('span', 'margin-top:auto;font-weight:600;color:#1B3BFF;font-size:15px', 'Read article'));
+        a.appendChild(body);
+        box.appendChild(a);
+      });
+      if (wrap) { wrap.hidden = false; }
+    }).catch(none);
+  })();
 })();

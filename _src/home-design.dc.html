@@ -1,0 +1,742 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Da Sachin Sharma, AI trainer, coach and consultant</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,800&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500&display=swap">
+<style>
+body{margin:0;background:#061230;font-family:"Bricolage Grotesque",ui-sans-serif,system-ui,sans-serif;color:#0A1A3F}
+*{box-sizing:border-box}
+a{color:#1B3BFF}a:hover{color:#0A1A3F}
+a:focus-visible,button:focus-visible,summary:focus-visible{outline:3px solid #1B3BFF;outline-offset:3px}
+.btn{transition:transform .2s ease,box-shadow .2s ease}
+.btn:hover{transform:translateY(-2px);box-shadow:0 14px 30px -12px rgba(27,59,255,.55)}
+.lift{transition:transform .25s ease,box-shadow .25s ease}
+.lift:hover{transform:translateY(-6px);box-shadow:0 28px 50px -28px rgba(10,26,63,.45)}
+.navl a{color:#0A1A3F;text-decoration:none}.navl a:hover{color:#1B3BFF}
+.onblue a{color:#FFFFFF}.onblue a:hover{color:#D5E2FF}
+.onnavy a{color:#FFFFFF}.onnavy a:hover{color:#8FB0FF}
+.book img{transition:transform .35s ease}
+.book:hover img{transform:translateY(-8px) rotate(-2deg)}
+details summary{list-style:none;cursor:pointer}
+details summary::-webkit-details-marker{display:none}
+details .plus{transition:transform .25s ease}
+details[open] .plus{transform:rotate(45deg)}
+@keyframes marq{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+@keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
+@keyframes draw{from{stroke-dashoffset:620}to{stroke-dashoffset:0}}
+@keyframes blink{0%,49%{opacity:1}50%,100%{opacity:0}}
+@keyframes spin{from{transform:rotate(0)}to{transform:rotate(360deg)}}
+@keyframes pulse{0%{transform:scale(1);opacity:.55}100%{transform:scale(1.9);opacity:0}}
+@keyframes rise{from{opacity:.35;transform:translateY(34px)}to{opacity:1;transform:none}}
+.scribble{stroke-dasharray:620;stroke-dashoffset:0}
+@media (prefers-reduced-motion:no-preference){
+.marq{animation:marq 36s linear infinite}
+.marqwrap:hover .marq{animation-play-state:paused}
+.bob{animation:bob 6s ease-in-out infinite}
+.bob2{animation:bob 7.5s ease-in-out -2s infinite}
+.scribble{animation:draw 1.4s .5s ease-out both}
+.caret{animation:blink 1s step-end infinite}
+.spin{animation:spin 26s linear infinite;transform-origin:50% 50%}
+.pulse{animation:pulse 2.2s ease-out infinite}
+}
+@supports (animation-timeline:view()){
+@media (prefers-reduced-motion:no-preference){
+.rv{animation:rise linear both;animation-timeline:view();animation-range:entry 0% entry 45%}
+}
+}
+.cell{transition:background .2s ease,border-color .2s ease}
+.cell:hover{border-color:#8FB0FF !important}
+.cell:focus-visible{outline:3px solid #FFFFFF;outline-offset:2px}
+@media (max-width:760px){.navl{display:none !important}}
+</style>
+</helmet>
+
+<div style="background: #F5F8FD; overflow: hidden">
+
+<!-- NAV -->
+<header style="max-width: 1200px; margin: 0 auto; padding: 22px clamp(20px, 4vw, 40px); display: flex; align-items: center; justify-content: space-between; gap: 24px">
+  <a href="#top" style="font-weight: 800; font-size: 20px; letter-spacing: -0.02em; color: #0A1A3F; text-decoration: none">Da Sachin <span style="font-family: 'Instrument Serif', Georgia, serif; font-style: italic; font-weight: 400; color: #1B3BFF; font-size: 23px">Sharma</span></a>
+  <nav class="navl" aria-label="Primary" style="display: flex; gap: 30px; font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 12px; letter-spacing: 0.12em; text-transform: uppercase">
+    <a href="#play">Play</a>
+    <a href="#work">Work with me</a>
+    <a href="#method">Method</a>
+    <a href="#proof">Proof</a>
+    <a href="#books">Books</a>
+    <a href="#faq">FAQ</a>
+  </nav>
+  <a class="btn" href="mailto:dasachin@xdotai.in" style="display: inline-flex; align-items: center; gap: 10px; min-height: 44px; padding: 0 20px; border-radius: 999px; background: #0A1A3F; color: #FFFFFF; text-decoration: none; font-weight: 600; font-size: 15px">Book a call</a>
+</header>
+
+<!-- HERO -->
+<section id="top" style="position: relative">
+  <canvas ref="{{cvRef}}" data-dsp="1" aria-hidden="true" style="position: absolute; inset: 0; width: 100%; height: 100%; display: block"></canvas>
+  <div style="position: relative; max-width: 1200px; margin: 0 auto; padding: 48px clamp(20px, 4vw, 40px) 72px; display: flex; flex-wrap: wrap; align-items: center; gap: 56px">
+    <div style="flex: 1.25 1 520px; min-width: 0; display: flex; flex-direction: column; gap: 28px">
+      <div style="display: flex; align-items: center; gap: 12px; font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: #3D4C70">
+        <span style="position: relative; width: 10px; height: 10px; flex: none">
+          <span class="pulse" style="position: absolute; inset: 0; border-radius: 50%; background: #1B3BFF"></span>
+          <span style="position: absolute; inset: 0; border-radius: 50%; background: #1B3BFF"></span>
+        </span>
+        <span>AI trainer · AI coach · Consultant to managements</span>
+      </div>
+      <h1 style="margin: 0; font-size: clamp(46px, 6.9vw, 100px); line-height: 0.96; font-weight: 800; letter-spacing: -0.045em; text-wrap: balance">AI training that survives <span style="position: relative; display: inline-block; font-family: 'Instrument Serif', Georgia, serif; font-style: italic; font-weight: 400; letter-spacing: -0.01em; color: #1B3BFF; padding-bottom: 0.12em">Monday morning.<svg aria-hidden="true" viewBox="0 0 600 30" preserveAspectRatio="none" style="position: absolute; left: 0; bottom: -0.06em; width: 100%; height: 0.2em; overflow: visible"><path class="scribble" d="M4 18 C 90 4, 170 28, 260 14 S 430 6, 596 16" style="fill: none; stroke: #1B3BFF; stroke-width: 5; stroke-linecap: round"></path></svg></span></h1>
+      <p style="margin: 0; max-width: 580px; font-size: clamp(17px, 1.5vw, 20px); line-height: 1.55; color: #33415F"><strong style="color: #0A1A3F">Da Sachin Sharma</strong> is an AI trainer, coach and consultant based in Mumbai. He trains teams and advises managements on putting AI to work: problem first, solution second, and a team that can run it without him.</p>
+      <div style="display: flex; flex-wrap: wrap; align-items: center; gap: 22px">
+        <a class="btn" href="mailto:dasachin@xdotai.in" style="display: inline-flex; align-items: center; gap: 12px; min-height: 56px; padding: 0 28px; border-radius: 999px; background: #1B3BFF; color: #FFFFFF; text-decoration: none; font-weight: 600; font-size: 17px">Start a conversation
+          <svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" style="fill: none; stroke: currentColor; stroke-width: 2.4; stroke-linecap: round; stroke-linejoin: round"><path d="M5 12h14M13 6l6 6-6 6"></path></svg>
+        </a>
+        <a href="#play" style="font-weight: 600; font-size: 16px; color: #0A1A3F; text-underline-offset: 5px">Or solve the 2-minute puzzle first</a>
+      </div>
+      <div aria-hidden="true" style="font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 12px; letter-spacing: 0.08em; color: #3D4C70">Move your cursor. Scattered people become a connected team.</div>
+    </div>
+
+    <div style="flex: 1 1 360px; min-width: 0; display: flex; justify-content: center">
+      <div style="position: relative; width: min(440px, 100%)">
+        <div style="position: relative; border-radius: 28px; overflow: hidden; background: #3D5BFF; aspect-ratio: 5 / 6; box-shadow: 0 50px 90px -44px rgba(10,26,63,0.7)">
+          <img src="/_blob/9413c4c25e7001b3a5b18e277ab7608c" alt="Da Sachin Sharma, AI trainer and coach" style="display: block; width: 100%; height: 100%; object-fit: cover; object-position: 50% 16%; mix-blend-mode: luminosity; filter: contrast(1.15)">
+          <div style="position: absolute; left: 0; right: 0; bottom: 0; padding: 60px 20px 18px; background: linear-gradient(to top, rgba(6,18,48,0.92), rgba(6,18,48,0)); font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: #FFFFFF">[COVER SLOT · swap in a photo of you training a room]</div>
+        </div>
+        <div class="bob" style="position: absolute; right: -18px; top: 44px; padding: 14px 18px; border-radius: 16px; background: #0A1A3F; color: #FFFFFF; box-shadow: 0 20px 40px -18px rgba(10,26,63,0.7)">
+          <div style="font-size: 30px; font-weight: 800; letter-spacing: -0.03em; line-height: 1">1000+</div>
+          <div style="font-size: 13px; margin-top: 4px">professionals trained in AI</div>
+        </div>
+        <div class="bob2" style="position: absolute; left: -22px; bottom: 84px; padding: 12px 16px; border-radius: 14px; background: #FFFFFF; border: 1px solid #C9D4EE; box-shadow: 0 18px 36px -20px rgba(10,26,63,0.4); font-size: 14px; font-weight: 600">Guest Faculty, IICT Mumbai</div>
+      </div>
+    </div>
+  </div>
+
+  <div style="position: relative; max-width: 1200px; margin: 0 auto; padding: 0 clamp(20px, 4vw, 40px) 56px">
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(220px, 100%), 1fr)); gap: 0; border-top: 2px solid #0A1A3F; background: #F5F8FD">
+      <div style="padding: 22px 22px 22px 0; display: flex; flex-direction: column; gap: 6px">
+        <div style="font-size: clamp(40px, 4.4vw, 60px); font-weight: 800; letter-spacing: -0.04em; line-height: 1">1000<span style="color: #1B3BFF">+</span></div>
+        <div style="font-size: 15px; color: #3D4C70">professionals trained to use AI at work</div>
+      </div>
+      <div style="padding: 22px; display: flex; flex-direction: column; gap: 6px; border-left: 1px solid #C9D4EE">
+        <div style="font-size: clamp(40px, 4.4vw, 60px); font-weight: 800; letter-spacing: -0.04em; line-height: 1">200<span style="color: #1B3BFF">+</span></div>
+        <div style="font-size: 15px; color: #3D4C70">Indian brands built, rebranded and scaled</div>
+      </div>
+      <div style="padding: 22px; display: flex; flex-direction: column; gap: 6px; border-left: 1px solid #C9D4EE">
+        <div style="font-size: clamp(40px, 4.4vw, 60px); font-weight: 800; letter-spacing: -0.04em; line-height: 1">18<span style="color: #1B3BFF">+</span></div>
+        <div style="font-size: 15px; color: #3D4C70">years in brands, advertising and film</div>
+      </div>
+      <div style="padding: 22px; display: flex; flex-direction: column; gap: 6px; border-left: 1px solid #C9D4EE">
+        <div style="font-size: clamp(40px, 4.4vw, 60px); font-weight: 800; letter-spacing: -0.04em; line-height: 1">5</div>
+        <div style="font-size: 15px; color: #3D4C70">books published, three of them on AI</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MARQUEE -->
+<div class="marqwrap" style="background: #1B3BFF; color: #FFFFFF; overflow: hidden; padding: 20px 0">
+  <div class="marq" style="display: flex; width: max-content; gap: 0; font-size: 22px; font-weight: 600; letter-spacing: -0.01em; white-space: nowrap">
+    <div style="display: flex; align-items: center; gap: 36px; padding-right: 36px">
+      <span style="font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; font-weight: 400">Trained and built for teams at</span>
+      <span>Zee Entertainment</span><span aria-hidden="true">✦</span>
+      <span>Saregama</span><span aria-hidden="true">✦</span>
+      <span>EPAM</span><span aria-hidden="true">✦</span>
+      <span>Shemaroo Entertainment</span><span aria-hidden="true">✦</span>
+      <span>Cinevistaa</span><span aria-hidden="true">✦</span>
+      <span>IICT Mumbai</span><span aria-hidden="true">✦</span>
+      <span>Zudio</span><span aria-hidden="true">✦</span>
+    </div>
+    <div aria-hidden="true" style="display: flex; align-items: center; gap: 36px; padding-right: 36px">
+      <span style="font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; font-weight: 400">Trained and built for teams at</span>
+      <span>Zee Entertainment</span><span>✦</span>
+      <span>Saregama</span><span>✦</span>
+      <span>EPAM</span><span>✦</span>
+      <span>Shemaroo Entertainment</span><span>✦</span>
+      <span>Cinevistaa</span><span>✦</span>
+      <span>IICT Mumbai</span><span>✦</span>
+      <span>Zudio</span><span>✦</span>
+    </div>
+  </div>
+</div>
+
+<!-- THE GAP · playable -->
+<section id="play" class="onnavy" style="background: #061230; color: #FFFFFF">
+  <div style="max-width: 1200px; margin: 0 auto; padding: 88px clamp(20px, 4vw, 40px); display: flex; flex-wrap: wrap; align-items: center; gap: 56px">
+    <div style="flex: 1 1 400px; min-width: 0; display: flex; flex-direction: column; gap: 24px">
+      <div style="font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: #A9B8DD">The gap I close · play it</div>
+      <h2 style="margin: 0; font-family: 'Instrument Serif', Georgia, serif; font-weight: 400; font-size: clamp(38px, 4.6vw, 62px); line-height: 1.04; text-wrap: balance">Most AI training ends with a certificate. <span style="font-style: italic; color: #8FB0FF">Mine ends with a workflow.</span></h2>
+      <p style="margin: 0; max-width: 480px; font-size: 17px; line-height: 1.6; color: #C6D2EE">Every AI project is a wiring problem: the real problem has to reach the data, the people and a result. Leave one link loose and nothing moves. Try it.</p>
+
+      <div style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); border: 1px solid #2A3A66; border-radius: 16px; overflow: hidden">
+        <div style="padding: 16px; display: flex; flex-direction: column; gap: 4px"><span style="font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: #A9B8DD">Level</span><span style="font-size: 26px; font-weight: 800; letter-spacing: -0.02em">{{g.level}}</span></div>
+        <div style="padding: 16px; display: flex; flex-direction: column; gap: 4px; border-left: 1px solid #2A3A66"><span style="font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: #A9B8DD">Moves</span><span style="font-size: 26px; font-weight: 800; letter-spacing: -0.02em">{{g.moves}}</span></div>
+        <div style="padding: 16px; display: flex; flex-direction: column; gap: 4px; border-left: 1px solid #2A3A66"><span style="font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: #A9B8DD">Linked</span><span style="font-size: 26px; font-weight: 800; letter-spacing: -0.02em">{{g.linked}}</span></div>
+      </div>
+
+      <div role="status" style="padding: 20px; border-radius: 16px; background: {{g.msgBg}}; color: {{g.msgFg}}; display: flex; flex-direction: column; gap: 14px; min-height: 132px">
+        <div style="font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase">{{g.msgTag}}</div>
+        <div style="font-size: 19px; font-weight: 600; line-height: 1.35">{{g.msg}}</div>
+        <sc-if value="{{g.showNext}}" hint-placeholder-val="{{false}}">
+          <button type="button" class="btn" onClick="{{nextLevel}}" style="align-self: flex-start; min-height: 48px; padding: 0 24px; border-radius: 999px; border: none; background: #061230; color: #FFFFFF; font: inherit; font-weight: 600; font-size: 16px; cursor: pointer">Next level</button>
+        </sc-if>
+        <sc-if value="{{g.showEnd}}" hint-placeholder-val="{{false}}">
+          <div style="display: flex; flex-wrap: wrap; gap: 12px">
+            <a class="btn" href="#contact" style="display: inline-flex; align-items: center; min-height: 48px; padding: 0 24px; border-radius: 999px; background: #061230; color: #FFFFFF; text-decoration: none; font-weight: 600; font-size: 16px">Now wire your real business</a>
+            <button type="button" onClick="{{restart}}" style="min-height: 48px; padding: 0 22px; border-radius: 999px; border: 1.5px solid #061230; background: transparent; color: #061230; font: inherit; font-weight: 600; font-size: 16px; cursor: pointer">Play again</button>
+          </div>
+        </sc-if>
+      </div>
+
+      <div style="display: flex; flex-wrap: wrap; align-items: center; gap: 14px; font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 12px; letter-spacing: 0.06em; color: #A9B8DD">
+        <button type="button" onClick="{{resetLevel}}" style="min-height: 44px; padding: 0 18px; border-radius: 999px; border: 1.5px solid #46598F; background: transparent; color: #FFFFFF; font: inherit; cursor: pointer">Reset level</button>
+        <span>Tap a tile to turn it · Arrow keys to move · Space to turn · R to reset</span>
+      </div>
+    </div>
+
+    <div style="flex: 1.1 1 420px; min-width: 0; display: flex; justify-content: center">
+      <div data-grid="1" style="display: grid; grid-template-columns: repeat({{g.n}}, minmax(0, 1fr)); gap: 6px; width: min(560px, 100%); padding: 14px; border-radius: 28px; background: #0C1D48; border: 1px solid #2A3A66; box-shadow: 0 50px 90px -50px rgba(0,0,0,0.9)">
+        <sc-for list="{{cells}}" as="c" hint-placeholder-count="16">
+          <button type="button" class="cell" onClick="{{c.turn}}" onKeyDown="{{c.key}}" aria-label="{{c.aria}}" style="position: relative; aspect-ratio: 1 / 1; padding: 0; border-radius: 12px; border: 1.5px solid {{c.bd}}; background: {{c.bg}}; cursor: pointer; touch-action: manipulation; overflow: hidden">
+            <svg aria-hidden="true" viewBox="0 0 100 100" style="position: absolute; inset: 0; width: 100%; height: 100%; transform: rotate({{c.deg}}); transition: transform .22s ease"><path d="{{c.d}}" style="fill: none; stroke: {{c.stroke}}; stroke-width: 16; stroke-linejoin: round"></path><circle cx="50" cy="50" r="11" style="fill: {{c.stroke}}"></circle></svg>
+            <sc-if value="{{c.fixed}}" hint-placeholder-val="{{false}}">
+              <span style="position: absolute; inset: 14%; border-radius: 8px; background: {{c.chipBg}}; color: {{c.chipFg}}; display: flex; align-items: center; justify-content: center; font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: clamp(8px, 1.05vw, 11px); font-weight: 500; letter-spacing: 0.02em">{{c.label}}</span>
+            </sc-if>
+          </button>
+        </sc-for>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHO'S ASKING (interactive) -->
+<section style="background: #F5F8FD">
+  <div style="max-width: 1200px; margin: 0 auto; padding: 88px clamp(20px, 4vw, 40px) 64px; display: flex; flex-direction: column; gap: 36px">
+    <div class="rv" style="display: flex; flex-direction: column; gap: 18px">
+      <div style="font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: #3D4C70">Who I work with · tap yours</div>
+      <h2 style="margin: 0; font-size: clamp(38px, 5.2vw, 72px); font-weight: 800; letter-spacing: -0.04em; line-height: 1; text-wrap: balance">So, who's <span style="font-family: 'Instrument Serif', Georgia, serif; font-style: italic; font-weight: 400; letter-spacing: -0.01em; color: #1B3BFF">asking?</span></h2>
+    </div>
+    <div style="display: flex; flex-wrap: wrap; gap: 12px">
+      <button type="button" onClick="{{pick1}}" aria-pressed="{{t1.pressed}}" style="min-height: 48px; padding: 0 22px; border-radius: 999px; border: 1.5px solid {{t1.bd}}; background: {{t1.bg}}; color: {{t1.fg}}; font: inherit; font-weight: 600; font-size: 16px; cursor: pointer">Founders and promoters</button>
+      <button type="button" onClick="{{pick2}}" aria-pressed="{{t2.pressed}}" style="min-height: 48px; padding: 0 22px; border-radius: 999px; border: 1.5px solid {{t2.bd}}; background: {{t2.bg}}; color: {{t2.fg}}; font: inherit; font-weight: 600; font-size: 16px; cursor: pointer">CXOs and business heads</button>
+      <button type="button" onClick="{{pick3}}" aria-pressed="{{t3.pressed}}" style="min-height: 48px; padding: 0 22px; border-radius: 999px; border: 1.5px solid {{t3.bd}}; background: {{t3.bg}}; color: {{t3.fg}}; font: inherit; font-weight: 600; font-size: 16px; cursor: pointer">Brand and marketing leaders</button>
+      <button type="button" onClick="{{pick4}}" aria-pressed="{{t4.pressed}}" style="min-height: 48px; padding: 0 22px; border-radius: 999px; border: 1.5px solid {{t4.bd}}; background: {{t4.bg}}; color: {{t4.fg}}; font: inherit; font-weight: 600; font-size: 16px; cursor: pointer">Agencies and creative teams</button>
+    </div>
+
+    <sc-if value="{{is1}}" hint-placeholder-val="{{true}}">
+      <div style="display: flex; flex-wrap: wrap; gap: 0; border-radius: 24px; overflow: hidden; background: #FFFFFF; border: 1px solid #C9D4EE">
+        <div style="flex: 1 1 380px; min-width: 0; padding: clamp(28px, 4vw, 48px); background: #E7EEFF; display: flex; flex-direction: column; justify-content: space-between; gap: 32px">
+          <p style="margin: 0; font-family: 'Instrument Serif', Georgia, serif; font-size: clamp(30px, 3.2vw, 44px); line-height: 1.1">You built the business. Now AI has to <span style="font-style: italic; color: #1B3BFF">earn its place in it.</span></p>
+          <div style="font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 12px; letter-spacing: 0.12em; text-transform: uppercase; color: #33415F">Best fit · AI consulting + team training</div>
+        </div>
+        <div style="flex: 1.3 1 420px; min-width: 0; padding: clamp(28px, 4vw, 48px); display: flex; flex-direction: column; gap: 0">
+          <div style="display: flex; gap: 20px; padding: 0 0 20px; border-bottom: 1px solid #DCE4F5"><div style="flex: none; width: 128px; font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 12px; letter-spacing: 0.12em; text-transform: uppercase; color: #1B3BFF; padding-top: 4px">We start with</div><div style="font-size: 17px; line-height: 1.5">A working session with you and your core team on where time and money actually leak.</div></div>
+          <div style="display: flex; gap: 20px; padding: 20px 0; border-bottom: 1px solid #DCE4F5"><div style="flex: none; width: 128px; font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 12px; letter-spacing: 0.12em; text-transform: uppercase; color: #1B3BFF; padding-top: 4px">We build</div><div style="font-size: 17px; line-height: 1.5">Two or three AI workflows for sales, content or operations, sized for an MSME or a D2C brand.</div></div>
+          <div style="display: flex; gap: 20px; padding: 20px 0 0"><div style="flex: none; width: 128px; font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 12px; letter-spacing: 0.12em; text-transform: uppercase; color: #1B3BFF; padding-top: 4px">You leave with</div><div style="font-size: 17px; line-height: 1.5">A team that runs them on its own, with no consultant on call.</div></div>
+        </div>
+      </div>
+    </sc-if>
+    <sc-if value="{{is2}}" hint-placeholder-val="{{false}}">
+      <div style="display: flex; flex-wrap: wrap; gap: 0; border-radius: 24px; overflow: hidden; background: #FFFFFF; border: 1px solid #C9D4EE">
+        <div style="flex: 1 1 380px; min-width: 0; padding: clamp(28px, 4vw, 48px); background: #E7EEFF; display: flex; flex-direction: column; justify-content: space-between; gap: 32px">
+          <p style="margin: 0; font-family: 'Instrument Serif', Georgia, serif; font-size: clamp(30px, 3.2vw, 44px); line-height: 1.1">You have the tools and the budget. <span style="font-style: italic; color: #1B3BFF">Adoption is the problem.</span></p>
+          <div style="font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 12px; letter-spacing: 0.12em; text-transform: uppercase; color: #33415F">Best fit · Management consulting + training</div>
+        </div>
+        <div style="flex: 1.3 1 420px; min-width: 0; padding: clamp(28px, 4vw, 48px); display: flex; flex-direction: column; gap: 0">
+          <div style="display: flex; gap: 20px; padding: 0 0 20px; border-bottom: 1px solid #DCE4F5"><div style="flex: none; width: 128px; font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 12px; letter-spacing: 0.12em; text-transform: uppercase; color: #1B3BFF; padding-top: 4px">We start with</div><div style="font-size: 17px; line-height: 1.5">Leadership alignment on which business problems AI should solve first.</div></div>
+          <div style="display: flex; gap: 20px; padding: 20px 0; border-bottom: 1px solid #DCE4F5"><div style="flex: none; width: 128px; font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 12px; letter-spacing: 0.12em; text-transform: uppercase; color: #1B3BFF; padding-top: 4px">We build</div><div style="font-size: 17px; line-height: 1.5">A department by department adoption plan, with the workflows that fit each team.</div></div>
+          <div style="display: flex; gap: 20px; padding: 20px 0 0"><div style="flex: none; width: 128px; font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 12px; letter-spacing: 0.12em; text-transform: uppercase; color: #1B3BFF; padding-top: 4px">You leave with</div><div style="font-size: 17px; line-height: 1.5">Managers who can track real usage and results, not just attendance.</div></div>
+        </div>
+      </div>
+    </sc-if>
+    <sc-if value="{{is3}}" hint-placeholder-val="{{false}}">
+      <div style="display: flex; flex-wrap: wrap; gap: 0; border-radius: 24px; overflow: hidden; background: #FFFFFF; border: 1px solid #C9D4EE">
+        <div style="flex: 1 1 380px; min-width: 0; padding: clamp(28px, 4vw, 48px); background: #E7EEFF; display: flex; flex-direction: column; justify-content: space-between; gap: 32px">
+          <p style="margin: 0; font-family: 'Instrument Serif', Georgia, serif; font-size: clamp(30px, 3.2vw, 44px); line-height: 1.1">You need more content, faster, <span style="font-style: italic; color: #1B3BFF">without losing the brand.</span></p>
+          <div style="font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 12px; letter-spacing: 0.12em; text-transform: uppercase; color: #33415F">Best fit · Team training + custom AI tools</div>
+        </div>
+        <div style="flex: 1.3 1 420px; min-width: 0; padding: clamp(28px, 4vw, 48px); display: flex; flex-direction: column; gap: 0">
+          <div style="display: flex; gap: 20px; padding: 0 0 20px; border-bottom: 1px solid #DCE4F5"><div style="flex: none; width: 128px; font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 12px; letter-spacing: 0.12em; text-transform: uppercase; color: #1B3BFF; padding-top: 4px">We start with</div><div style="font-size: 17px; line-height: 1.5">Your brand voice, your approval flow and your content calendar.</div></div>
+          <div style="display: flex; gap: 20px; padding: 20px 0; border-bottom: 1px solid #DCE4F5"><div style="flex: none; width: 128px; font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 12px; letter-spacing: 0.12em; text-transform: uppercase; color: #1B3BFF; padding-top: 4px">We build</div><div style="font-size: 17px; line-height: 1.5">On-brand content workflows for copy, image and video, tuned to how your brand speaks.</div></div>
+          <div style="display: flex; gap: 20px; padding: 20px 0 0"><div style="flex: none; width: 128px; font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 12px; letter-spacing: 0.12em; text-transform: uppercase; color: #1B3BFF; padding-top: 4px">You leave with</div><div style="font-size: 17px; line-height: 1.5">A team producing at scale that still sounds like you everywhere AI touches the brand.</div></div>
+        </div>
+      </div>
+    </sc-if>
+    <sc-if value="{{is4}}" hint-placeholder-val="{{false}}">
+      <div style="display: flex; flex-wrap: wrap; gap: 0; border-radius: 24px; overflow: hidden; background: #FFFFFF; border: 1px solid #C9D4EE">
+        <div style="flex: 1 1 380px; min-width: 0; padding: clamp(28px, 4vw, 48px); background: #E7EEFF; display: flex; flex-direction: column; justify-content: space-between; gap: 32px">
+          <p style="margin: 0; font-family: 'Instrument Serif', Georgia, serif; font-size: clamp(30px, 3.2vw, 44px); line-height: 1.1">Clients keep asking what your <span style="font-style: italic; color: #1B3BFF">AI capability is.</span></p>
+          <div style="font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 12px; letter-spacing: 0.12em; text-transform: uppercase; color: #33415F">Best fit · Studio training + AI film workflows</div>
+        </div>
+        <div style="flex: 1.3 1 420px; min-width: 0; padding: clamp(28px, 4vw, 48px); display: flex; flex-direction: column; gap: 0">
+          <div style="display: flex; gap: 20px; padding: 0 0 20px; border-bottom: 1px solid #DCE4F5"><div style="flex: none; width: 128px; font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 12px; letter-spacing: 0.12em; text-transform: uppercase; color: #1B3BFF; padding-top: 4px">We start with</div><div style="font-size: 17px; line-height: 1.5">A look at how your studio briefs, creates and delivers today.</div></div>
+          <div style="display: flex; gap: 20px; padding: 20px 0; border-bottom: 1px solid #DCE4F5"><div style="flex: none; width: 128px; font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 12px; letter-spacing: 0.12em; text-transform: uppercase; color: #1B3BFF; padding-top: 4px">We build</div><div style="font-size: 17px; line-height: 1.5">AI pipelines for ideation, design, film and post, taught by someone who has delivered 100+ AI commercial video projects.</div></div>
+          <div style="display: flex; gap: 20px; padding: 20px 0 0"><div style="flex: none; width: 128px; font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 12px; letter-spacing: 0.12em; text-transform: uppercase; color: #1B3BFF; padding-top: 4px">You leave with</div><div style="font-size: 17px; line-height: 1.5">New capabilities you can sell, and a team confident using them.</div></div>
+        </div>
+      </div>
+    </sc-if>
+  </div>
+</section>
+
+<!-- WAYS TO WORK TOGETHER (bento) -->
+<section id="work" style="background: #F5F8FD">
+  <div style="max-width: 1200px; margin: 0 auto; padding: 56px clamp(20px, 4vw, 40px) 88px; display: flex; flex-direction: column; gap: 20px">
+    <div class="rv" style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-end; gap: 24px; margin-bottom: 20px">
+      <div style="display: flex; flex-direction: column; gap: 18px">
+        <div style="font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: #3D4C70">How I help</div>
+        <h2 style="margin: 0; font-size: clamp(38px, 5.2vw, 72px); font-weight: 800; letter-spacing: -0.04em; line-height: 1">Four ways to <span style="font-family: 'Instrument Serif', Georgia, serif; font-style: italic; font-weight: 400; letter-spacing: -0.01em; color: #1B3BFF">work together.</span></h2>
+      </div>
+      <p style="margin: 0; max-width: 340px; font-size: 16px; line-height: 1.55; color: #3D4C70">Every engagement starts with a conversation with the decision makers. No two businesses are the same, so no single AI solution fits all.</p>
+    </div>
+
+    <div style="display: flex; flex-wrap: wrap; gap: 20px">
+      <article class="lift rv" style="flex: 1.7 1 520px; min-width: 0; position: relative; overflow: hidden; padding: clamp(28px, 3.4vw, 44px); border-radius: 28px; background: #1B3BFF; color: #FFFFFF; display: flex; flex-direction: column; gap: 22px; min-height: 380px">
+        <svg aria-hidden="true" viewBox="0 0 300 300" style="position: absolute; right: -70px; top: -70px; width: 320px; height: 320px; opacity: 0.22"><circle cx="150" cy="150" r="148" style="fill: none; stroke: #FFFFFF; stroke-width: 1.5"></circle><circle cx="150" cy="150" r="104" style="fill: none; stroke: #FFFFFF; stroke-width: 1.5"></circle><circle cx="150" cy="150" r="60" style="fill: none; stroke: #FFFFFF; stroke-width: 1.5"></circle></svg>
+        <div style="display: flex; flex-wrap: wrap; align-items: center; gap: 12px">
+          <span style="font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: #E7EEFF">01 · Team enablement</span>
+          <span style="padding: 5px 12px; border-radius: 999px; background: #FFFFFF; color: #0A1A3F; font-size: 12px; font-weight: 600">Most requested</span>
+        </div>
+        <h3 style="margin: 0; font-size: clamp(32px, 3.6vw, 50px); font-weight: 800; letter-spacing: -0.035em; line-height: 1">AI training for teams</h3>
+        <p style="margin: 0; max-width: 520px; font-size: 17px; line-height: 1.55; color: #F0F4FF">Hands-on AI training built around your team's real work, so people leave able to run it independently.</p>
+        <div style="display: flex; flex-wrap: wrap; gap: 10px; margin-top: auto">
+          <span style="padding: 9px 16px; border-radius: 999px; border: 1px solid rgba(255,255,255,0.6); font-size: 14px">Branding, marketing and content teams</span>
+          <span style="padding: 9px 16px; border-radius: 999px; border: 1px solid rgba(255,255,255,0.6); font-size: 14px">Agencies and creative studios</span>
+          <span style="padding: 9px 16px; border-radius: 999px; border: 1px solid rgba(255,255,255,0.6); font-size: 14px">Corporate team building</span>
+        </div>
+      </article>
+      <article class="lift rv" style="flex: 1 1 320px; min-width: 0; padding: clamp(28px, 3.4vw, 40px); border-radius: 28px; background: #FFFFFF; border: 1px solid #C9D4EE; display: flex; flex-direction: column; gap: 18px">
+        <span style="font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: #1B3BFF">02 · For managements</span>
+        <h3 style="margin: 0; font-size: 32px; font-weight: 800; letter-spacing: -0.03em; line-height: 1.05">AI consulting</h3>
+        <p style="margin: 0; font-size: 16px; line-height: 1.55; color: #3D4C70">Deciding where AI belongs in the business, and where it does not.</p>
+        <ul style="margin: auto 0 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 0; font-size: 15.5px">
+          <li style="padding: 12px 0; border-top: 1px solid #DCE4F5">AI workflows for marketing and operations</li>
+          <li style="padding: 12px 0; border-top: 1px solid #DCE4F5">On-brand content at scale</li>
+          <li style="padding: 12px 0 0; border-top: 1px solid #DCE4F5">A brand that stays consistent everywhere AI touches it</li>
+        </ul>
+      </article>
+    </div>
+
+    <div style="display: flex; flex-wrap: wrap; gap: 20px">
+      <article class="lift rv" style="flex: 1 1 300px; min-width: 0; padding: clamp(28px, 3.4vw, 40px); border-radius: 28px; background: #E7EEFF; display: flex; flex-direction: column; gap: 16px">
+        <span style="font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: #1B3BFF">03 · One to one</span>
+        <h3 style="margin: 0; font-size: 30px; font-weight: 800; letter-spacing: -0.03em; line-height: 1.05">Coaching for leaders</h3>
+        <p style="margin: 0; font-size: 16px; line-height: 1.55; color: #33415F">One-to-one guidance for founders and leaders who want to lead the AI shift themselves, not delegate it blindly.</p>
+      </article>
+      <article class="lift rv" style="flex: 1 1 300px; min-width: 0; padding: clamp(28px, 3.4vw, 40px); border-radius: 28px; background: #FFFFFF; border: 1px solid #C9D4EE; display: flex; flex-direction: column; gap: 16px">
+        <span style="font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: #1B3BFF">04 · Built for you</span>
+        <h3 style="margin: 0; font-size: 30px; font-weight: 800; letter-spacing: -0.03em; line-height: 1.05">Custom AI tools</h3>
+        <p style="margin: 0; font-size: 16px; line-height: 1.55; color: #3D4C70">When an off-the-shelf tool does not fit, I design the workflow, tool or system around how your business actually works.</p>
+      </article>
+      <article class="lift rv onnavy" style="flex: 1.2 1 340px; min-width: 0; padding: clamp(28px, 3.4vw, 40px); border-radius: 28px; background: #061230; color: #FFFFFF; display: flex; flex-direction: column; gap: 16px">
+        <span style="align-self: flex-start; padding: 5px 12px; border-radius: 6px; background: #8FB0FF; color: #061230; font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase">Case · Zudio</span>
+        <h3 style="margin: 0; font-family: 'Instrument Serif', Georgia, serif; font-weight: 400; font-size: 34px; line-height: 1.08">An AI footwear design tool, built around the brand's own process.</h3>
+        <p style="margin: 0; font-size: 16px; line-height: 1.55; color: #C6D2EE">The team could explore and iterate footwear concepts faster, without changing how they work.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- METHOD -->
+<section id="method" style="background: #FFFFFF; border-top: 1px solid #DCE4F5; border-bottom: 1px solid #DCE4F5">
+  <div style="max-width: 1200px; margin: 0 auto; padding: 88px clamp(20px, 4vw, 40px); display: flex; flex-direction: column; gap: 56px">
+    <div class="rv" style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-end; gap: 24px">
+      <div style="display: flex; flex-direction: column; gap: 18px">
+        <div style="font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: #3D4C70">The method · 4D</div>
+        <h2 style="margin: 0; font-size: clamp(38px, 5.2vw, 72px); font-weight: 800; letter-spacing: -0.04em; line-height: 1">Problem first. <span style="font-family: 'Instrument Serif', Georgia, serif; font-style: italic; font-weight: 400; letter-spacing: -0.01em; color: #1B3BFF">Solution second.</span></h2>
+      </div>
+      <p style="margin: 0; max-width: 360px; font-size: 16px; line-height: 1.55; color: #3D4C70">My creative philosophy is vision over tool. AI is a medium directed by human intelligence, not a replacement for it.</p>
+    </div>
+    <ol style="margin: 0; padding: 0; list-style: none; display: grid; grid-template-columns: repeat(auto-fit, minmax(min(240px, 100%), 1fr)); gap: 20px">
+      <li class="lift rv" style="padding: 28px; border-radius: 22px; background: #F5F8FD; border: 1px solid #DCE4F5; display: flex; flex-direction: column; gap: 14px">
+        <div style="font-size: 72px; font-weight: 800; letter-spacing: -0.05em; line-height: 0.9; color: #D5E2FF">01</div>
+        <h3 style="margin: 0; font-size: 26px; font-weight: 800; letter-spacing: -0.02em">Diagnose</h3>
+        <p style="margin: 0; font-size: 16px; line-height: 1.55; color: #3D4C70">Sit with leadership to understand the business, its market, its consumers and its real challenge.</p>
+      </li>
+      <li class="lift rv" style="padding: 28px; border-radius: 22px; background: #F5F8FD; border: 1px solid #DCE4F5; display: flex; flex-direction: column; gap: 14px">
+        <div style="font-size: 72px; font-weight: 800; letter-spacing: -0.05em; line-height: 0.9; color: #B5C9FF">02</div>
+        <h3 style="margin: 0; font-size: 26px; font-weight: 800; letter-spacing: -0.02em">Define</h3>
+        <p style="margin: 0; font-size: 16px; line-height: 1.55; color: #3D4C70">Sharpen what must change and what good looks like, so there is something clear to scale.</p>
+      </li>
+      <li class="lift rv" style="padding: 28px; border-radius: 22px; background: #F5F8FD; border: 1px solid #DCE4F5; display: flex; flex-direction: column; gap: 14px">
+        <div style="font-size: 72px; font-weight: 800; letter-spacing: -0.05em; line-height: 0.9; color: #7F9DFF">03</div>
+        <h3 style="margin: 0; font-size: 26px; font-weight: 800; letter-spacing: -0.02em">Design</h3>
+        <p style="margin: 0; font-size: 16px; line-height: 1.55; color: #3D4C70">Design the AI workflow, tool or system that fits this business and no other.</p>
+      </li>
+      <li class="lift rv" style="padding: 28px; border-radius: 22px; background: #1B3BFF; color: #FFFFFF; display: flex; flex-direction: column; gap: 14px">
+        <div style="font-size: 72px; font-weight: 800; letter-spacing: -0.05em; line-height: 0.9; color: #FFFFFF">04</div>
+        <h3 style="margin: 0; font-size: 26px; font-weight: 800; letter-spacing: -0.02em">Deploy</h3>
+        <p style="margin: 0; font-size: 16px; line-height: 1.55; color: #F0F4FF">Build it into daily work and train the team to run it independently.</p>
+      </li>
+    </ol>
+  </div>
+</section>
+
+<!-- PROOF: video, photos, voices -->
+<section id="proof" style="background: #F5F8FD">
+  <div style="max-width: 1200px; margin: 0 auto; padding: 88px clamp(20px, 4vw, 40px); display: flex; flex-direction: column; gap: 20px">
+    <div class="rv" style="display: flex; flex-direction: column; gap: 18px; margin-bottom: 20px">
+      <div style="font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: #3D4C70">In the room</div>
+      <h2 style="margin: 0; max-width: 900px; font-size: clamp(38px, 5.2vw, 72px); font-weight: 800; letter-spacing: -0.04em; line-height: 1; text-wrap: balance">Leaders and teams at India's leading <span style="font-family: 'Instrument Serif', Georgia, serif; font-style: italic; font-weight: 400; letter-spacing: -0.01em; color: #1B3BFF">media and technology companies.</span></h2>
+    </div>
+
+    <div style="display: flex; flex-wrap: wrap; gap: 20px">
+      <div class="rv" style="flex: 2 1 560px; min-width: 0; position: relative; aspect-ratio: 16 / 9; border-radius: 28px; overflow: hidden; background-color: #0A1A3F; background-image: repeating-linear-gradient(135deg, rgba(143,176,255,0.10) 0 2px, transparent 2px 18px); display: flex; align-items: center; justify-content: center">
+        <button type="button" class="btn" aria-label="Play training showreel" style="position: relative; width: 96px; height: 96px; border-radius: 50%; border: none; background: #FFFFFF; color: #1B3BFF; cursor: pointer; display: flex; align-items: center; justify-content: center">
+          <span class="pulse" aria-hidden="true" style="position: absolute; inset: 0; border-radius: 50%; background: #FFFFFF"></span>
+          <svg aria-hidden="true" width="30" height="30" viewBox="0 0 24 24" style="position: relative; fill: currentColor"><path d="M8 5v14l11-7z"></path></svg>
+        </button>
+        <div style="position: absolute; left: 24px; bottom: 22px; right: 24px; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 8px; font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase; color: #C6D2EE">
+          <span>[YOUR SHOWREEL · 60 to 90 sec from a live training]</span>
+          <span>Autoplay muted on hover</span>
+        </div>
+      </div>
+      <div style="flex: 1 1 280px; min-width: 0; display: flex; flex-direction: column; gap: 20px">
+        <div class="rv" style="flex: 1 1 160px; min-height: 160px; border-radius: 28px; background-color: #D5E2FF; background-image: repeating-linear-gradient(135deg, rgba(27,59,255,0.10) 0 2px, transparent 2px 18px); display: flex; align-items: flex-end; padding: 20px; font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase; color: #0A1A3F">[PHOTO · you training a team, wide shot]</div>
+        <div class="rv" style="flex: 1 1 160px; min-height: 160px; border-radius: 28px; background-color: #D5E2FF; background-image: repeating-linear-gradient(135deg, rgba(27,59,255,0.10) 0 2px, transparent 2px 18px); display: flex; align-items: flex-end; padding: 20px; font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase; color: #0A1A3F">[PHOTO · hackathon or stage moment]</div>
+      </div>
+    </div>
+
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(320px, 100%), 1fr)); gap: 20px">
+      <figure class="lift rv" style="margin: 0; padding: 32px; border-radius: 28px; background: #FFFFFF; border: 1px solid #C9D4EE; display: flex; flex-direction: column; gap: 20px">
+        <svg aria-hidden="true" width="34" height="26" viewBox="0 0 34 26" style="fill: #1B3BFF"><path d="M0 26V14C0 6 4 1 12 0v6c-3 1-5 3-5 7h6v13H0zm20 0V14c0-8 4-13 12-14v6c-3 1-5 3-5 7h7v13H20z"></path></svg>
+        <blockquote style="margin: 0; font-family: 'Instrument Serif', Georgia, serif; font-size: 26px; line-height: 1.2">[CLIENT QUOTE · one specific result from a training, in two lines]</blockquote>
+        <figcaption style="margin-top: auto; font-size: 14px; color: #3D4C70">[Name, title, company]</figcaption>
+      </figure>
+      <figure class="lift rv" style="margin: 0; padding: 32px; border-radius: 28px; background: #FFFFFF; border: 1px solid #C9D4EE; display: flex; flex-direction: column; gap: 20px">
+        <svg aria-hidden="true" width="34" height="26" viewBox="0 0 34 26" style="fill: #1B3BFF"><path d="M0 26V14C0 6 4 1 12 0v6c-3 1-5 3-5 7h6v13H0zm20 0V14c0-8 4-13 12-14v6c-3 1-5 3-5 7h7v13H20z"></path></svg>
+        <blockquote style="margin: 0; font-family: 'Instrument Serif', Georgia, serif; font-size: 26px; line-height: 1.2">[CLIENT QUOTE · a management view on what changed after consulting]</blockquote>
+        <figcaption style="margin-top: auto; font-size: 14px; color: #3D4C70">[Name, title, company]</figcaption>
+      </figure>
+      <div class="lift rv" style="padding: 32px; border-radius: 28px; background: #1B3BFF; color: #FFFFFF; display: flex; flex-direction: column; gap: 14px">
+        <span style="font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: #E7EEFF">Practitioner, not just a trainer</span>
+        <div style="font-size: 30px; font-weight: 800; letter-spacing: -0.03em; line-height: 1.05">Directed Meri Coffee, India's first AI-generated song.</div>
+        <p style="margin: auto 0 0; font-size: 15.5px; line-height: 1.5; color: #F0F4FF">Founder of OyeFilmy, an AI content creation tool used by teams at Zee, Cinevistaa and IICT.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BOOKS -->
+<section id="books" style="background: #FFFFFF; border-top: 1px solid #DCE4F5">
+  <div style="max-width: 1200px; margin: 0 auto; padding: 88px clamp(20px, 4vw, 40px); display: flex; flex-direction: column; gap: 36px">
+    <div class="rv" style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-end; gap: 24px">
+      <div style="display: flex; flex-direction: column; gap: 18px">
+        <div style="font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: #3D4C70">Author</div>
+        <h2 style="margin: 0; font-size: clamp(38px, 5.2vw, 72px); font-weight: 800; letter-spacing: -0.04em; line-height: 1">Ideas, <span style="font-family: 'Instrument Serif', Georgia, serif; font-style: italic; font-weight: 400; letter-spacing: -0.01em; color: #1B3BFF">written down.</span></h2>
+      </div>
+      <p style="margin: 0; font-size: 16px; color: #3D4C70">Three of five published titles.</p>
+    </div>
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(320px, 100%), 1fr)); gap: 20px">
+      <article class="book rv" style="display: flex; align-items: center; gap: 22px; padding: 22px; border-radius: 24px; background: #F5F8FD; border: 1px solid #DCE4F5">
+        <img src="/_blob/e1641cc5ee8232d04e9a38b1dc7bfa66" alt="Cover of Prompt DOT AI, 2026 edition, by Da Sachin Sharma" style="flex: none; width: 112px; border-radius: 4px; box-shadow: 0 20px 34px -18px rgba(10,26,63,0.6)">
+        <div style="display: flex; flex-direction: column; gap: 6px; min-width: 0"><div style="font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: #1B3BFF">AI · 2026 edition</div><h3 style="margin: 0; font-size: 22px; font-weight: 800; letter-spacing: -0.02em">Prompt DOT AI</h3><p style="margin: 0; font-size: 15px; line-height: 1.5; color: #3D4C70">The art of writing generative AI prompts, with real broadcast case studies from India.</p></div>
+      </article>
+      <article class="book rv" style="display: flex; align-items: center; gap: 22px; padding: 22px; border-radius: 24px; background: #F5F8FD; border: 1px solid #DCE4F5">
+        <img src="/_blob/97446e09d4c0dbbf2e62a4fb6bd84bac" alt="Cover of Creativity DOT AI by Da Sachin Sharma" style="flex: none; width: 112px; border-radius: 4px; box-shadow: 0 20px 34px -18px rgba(10,26,63,0.6)">
+        <div style="display: flex; flex-direction: column; gap: 6px; min-width: 0"><div style="font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: #1B3BFF">AI · Creative industry</div><h3 style="margin: 0; font-size: 22px; font-weight: 800; letter-spacing: -0.02em">Creativity DOT AI</h3><p style="margin: 0; font-size: 15px; line-height: 1.5; color: #3D4C70">The human-AI handbook for the creative industry.</p></div>
+      </article>
+      <article class="book rv" style="display: flex; align-items: center; gap: 22px; padding: 22px; border-radius: 24px; background: #F5F8FD; border: 1px solid #DCE4F5">
+        <img src="/_blob/e941bdde8a4804c51f55ccf99f816781" alt="Cover of The Warrior Who Put Down His Bow by Da Sachin Sharma" style="flex: none; width: 112px; border-radius: 4px; box-shadow: 0 20px 34px -18px rgba(10,26,63,0.6)">
+        <div style="display: flex; flex-direction: column; gap: 6px; min-width: 0"><div style="font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: #1B3BFF">Fable · AI and the Gita</div><h3 style="margin: 0; font-size: 22px; font-weight: 800; letter-spacing: -0.02em">The Warrior Who Put Down His Bow</h3><p style="margin: 0; font-size: 15px; line-height: 1.5; color: #3D4C70">A fable of AI, creativity and the Bhagavad Gita.</p></div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT + VENTURES -->
+<section id="about" style="background: #E7EEFF">
+  <div style="max-width: 1200px; margin: 0 auto; padding: 88px clamp(20px, 4vw, 40px); display: flex; flex-wrap: wrap; gap: 56px">
+    <div class="rv" style="flex: 1.2 1 480px; min-width: 0; display: flex; flex-direction: column; gap: 22px">
+      <div style="font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: #33415F">About</div>
+      <h2 style="margin: 0; font-family: 'Instrument Serif', Georgia, serif; font-weight: 400; font-size: clamp(34px, 4vw, 54px); line-height: 1.06; text-wrap: balance">Eighteen years of building brands. <span style="font-style: italic; color: #1B3BFF">Now building AI-ready teams.</span></h2>
+      <p style="margin: 0; font-size: 17px; line-height: 1.65; color: #1F2D4F">Da Sachin Sharma is the founder of X DOT AI, where he trains and consults brands, agencies and corporates on implementing AI across branding, marketing, content and business operations. He has led AI training and team building for Zee Entertainment, Saregama, EPAM and Shemaroo Entertainment.</p>
+      <p style="margin: 0; font-size: 17px; line-height: 1.65; color: #1F2D4F">Before AI, he ran his own agency, da kaizen solutions, serving Starbucks, Reliance Life Insurance and Future Group, and helped 200+ Indian MSMEs build, rebrand and scale. That is why his training starts with the business, not the tool.</p>
+      <p style="margin: 0; font-size: 17px; line-height: 1.65; color: #1F2D4F">He is Guest Faculty at IICT Mumbai and the author of five books.</p>
+    </div>
+    <div class="rv" style="flex: 1 1 360px; min-width: 0; display: flex; flex-direction: column; gap: 0; align-self: flex-end">
+      <div style="font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: #33415F; padding-bottom: 16px">Things I've founded</div>
+      <div style="padding: 22px 0; border-top: 2px solid #0A1A3F; display: flex; flex-direction: column; gap: 6px">
+        <div style="display: flex; justify-content: space-between; align-items: baseline; gap: 16px"><h3 style="margin: 0; font-size: 26px; font-weight: 800; letter-spacing: -0.02em">X DOT AI</h3><span style="font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: #1B3BFF">AI consulting and training</span></div>
+        <p style="margin: 0; font-size: 15.5px; line-height: 1.5; color: #33415F">Helps brands, agencies and corporates put AI to work.</p>
+      </div>
+      <div style="padding: 22px 0; border-top: 1px solid #A9BCEB; display: flex; flex-direction: column; gap: 6px">
+        <div style="display: flex; justify-content: space-between; align-items: baseline; gap: 16px"><h3 style="margin: 0; font-size: 26px; font-weight: 800; letter-spacing: -0.02em">OyeFilmy</h3><span style="font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: #1B3BFF">AI content creation tool</span></div>
+        <p style="margin: 0; font-size: 15.5px; line-height: 1.5; color: #33415F">Used by teams at Zee, Cinevistaa and IICT to plan and produce content with AI.</p>
+      </div>
+      <div style="padding: 22px 0 0; border-top: 1px solid #A9BCEB; display: flex; flex-direction: column; gap: 6px">
+        <div style="display: flex; justify-content: space-between; align-items: baseline; gap: 16px"><h3 style="margin: 0; font-size: 26px; font-weight: 800; letter-spacing: -0.02em">da kaizen solutions</h3><span style="font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: #1B3BFF">Brand and content agency</span></div>
+        <p style="margin: 0; font-size: 15.5px; line-height: 1.5; color: #33415F">Where it started: strategy, campaigns and content for national brands and MSMEs.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ (answer-first, for search and AI engines) -->
+<section id="faq" style="background: #F5F8FD">
+  <div style="max-width: 1200px; margin: 0 auto; padding: 88px clamp(20px, 4vw, 40px); display: flex; flex-wrap: wrap; gap: 48px">
+    <div class="rv" style="flex: 1 1 320px; min-width: 0; display: flex; flex-direction: column; gap: 18px">
+      <div style="font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: #3D4C70">Straight answers</div>
+      <h2 style="margin: 0; font-size: clamp(38px, 4.6vw, 64px); font-weight: 800; letter-spacing: -0.04em; line-height: 1">Asked <span style="font-family: 'Instrument Serif', Georgia, serif; font-style: italic; font-weight: 400; letter-spacing: -0.01em; color: #1B3BFF">often.</span></h2>
+      <p style="margin: 0; max-width: 320px; font-size: 16px; line-height: 1.55; color: #3D4C70">Short answers first. If yours is not here, write to me directly.</p>
+    </div>
+    <div class="rv" style="flex: 2 1 560px; min-width: 0; display: flex; flex-direction: column; gap: 0; border-top: 2px solid #0A1A3F">
+      <details open style="border-bottom: 1px solid #C9D4EE">
+        <summary style="display: flex; justify-content: space-between; align-items: center; gap: 20px; min-height: 44px; padding: 22px 0"><h3 style="margin: 0; font-size: 22px; font-weight: 600; letter-spacing: -0.01em">Who is Da Sachin Sharma?</h3><span class="plus" aria-hidden="true" style="flex: none; width: 36px; height: 36px; border-radius: 50%; background: #1B3BFF; color: #FFFFFF; display: flex; align-items: center; justify-content: center; font-size: 22px; line-height: 1">+</span></summary>
+        <p style="margin: 0; padding: 0 56px 24px 0; font-size: 17px; line-height: 1.6; color: #33415F">Da Sachin Sharma is an AI trainer, coach and consultant based in Mumbai, India, and the founder of X DOT AI. He has trained 1000+ professionals, has 18+ years in brands, advertising and film, and is the author of five books including Prompt DOT AI and Creativity DOT AI.</p>
+      </details>
+      <details style="border-bottom: 1px solid #C9D4EE">
+        <summary style="display: flex; justify-content: space-between; align-items: center; gap: 20px; min-height: 44px; padding: 22px 0"><h3 style="margin: 0; font-size: 22px; font-weight: 600; letter-spacing: -0.01em">What AI training does he offer for corporate teams?</h3><span class="plus" aria-hidden="true" style="flex: none; width: 36px; height: 36px; border-radius: 50%; background: #1B3BFF; color: #FFFFFF; display: flex; align-items: center; justify-content: center; font-size: 22px; line-height: 1">+</span></summary>
+        <p style="margin: 0; padding: 0 56px 24px 0; font-size: 17px; line-height: 1.6; color: #33415F">Hands-on generative AI training for branding, marketing, content and operations teams, built around the team's real work. [ADD FORMATS · on-site, online, duration and batch size]</p>
+      </details>
+      <details style="border-bottom: 1px solid #C9D4EE">
+        <summary style="display: flex; justify-content: space-between; align-items: center; gap: 20px; min-height: 44px; padding: 22px 0"><h3 style="margin: 0; font-size: 22px; font-weight: 600; letter-spacing: -0.01em">Which companies has he trained?</h3><span class="plus" aria-hidden="true" style="flex: none; width: 36px; height: 36px; border-radius: 50%; background: #1B3BFF; color: #FFFFFF; display: flex; align-items: center; justify-content: center; font-size: 22px; line-height: 1">+</span></summary>
+        <p style="margin: 0; padding: 0 56px 24px 0; font-size: 17px; line-height: 1.6; color: #33415F">He has led AI training and team building for Zee Entertainment, Saregama, EPAM and Shemaroo Entertainment, and is Guest Faculty at IICT Mumbai. For Zudio, he built an AI-powered footwear design tool.</p>
+      </details>
+      <details style="border-bottom: 1px solid #C9D4EE">
+        <summary style="display: flex; justify-content: space-between; align-items: center; gap: 20px; min-height: 44px; padding: 22px 0"><h3 style="margin: 0; font-size: 22px; font-weight: 600; letter-spacing: -0.01em">How is he different from other AI trainers in India?</h3><span class="plus" aria-hidden="true" style="flex: none; width: 36px; height: 36px; border-radius: 50%; background: #1B3BFF; color: #FFFFFF; display: flex; align-items: center; justify-content: center; font-size: 22px; line-height: 1">+</span></summary>
+        <p style="margin: 0; padding: 0 56px 24px 0; font-size: 17px; line-height: 1.6; color: #33415F">He starts with the business problem, not the tool. With 18+ years of building 200+ Indian brands, he designs the AI workflow that fits each business and trains the team to run it independently.</p>
+      </details>
+      <details style="border-bottom: 1px solid #C9D4EE">
+        <summary style="display: flex; justify-content: space-between; align-items: center; gap: 20px; min-height: 44px; padding: 22px 0"><h3 style="margin: 0; font-size: 22px; font-weight: 600; letter-spacing: -0.01em">Does he consult managements, or only train teams?</h3><span class="plus" aria-hidden="true" style="flex: none; width: 36px; height: 36px; border-radius: 50%; background: #1B3BFF; color: #FFFFFF; display: flex; align-items: center; justify-content: center; font-size: 22px; line-height: 1">+</span></summary>
+        <p style="margin: 0; padding: 0 56px 24px 0; font-size: 17px; line-height: 1.6; color: #33415F">Both. Every engagement starts with a conversation with the decision makers, then moves to consulting, custom AI tools, team training or one-to-one coaching, depending on the problem.</p>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section id="contact" class="onblue" style="position: relative; background: #1B3BFF; color: #FFFFFF; overflow: hidden">
+  <svg aria-hidden="true" viewBox="0 0 400 400" style="position: absolute; right: -120px; bottom: -160px; width: 560px; height: 560px; opacity: 0.2"><circle cx="200" cy="200" r="198" style="fill: none; stroke: #FFFFFF; stroke-width: 1.2"></circle><circle cx="200" cy="200" r="150" style="fill: none; stroke: #FFFFFF; stroke-width: 1.2"></circle><circle cx="200" cy="200" r="102" style="fill: none; stroke: #FFFFFF; stroke-width: 1.2"></circle><circle cx="200" cy="200" r="54" style="fill: none; stroke: #FFFFFF; stroke-width: 1.2"></circle></svg>
+  <div style="position: relative; max-width: 1200px; margin: 0 auto; padding: 112px clamp(20px, 4vw, 40px) 72px; display: flex; flex-direction: column; gap: 36px">
+    <div style="font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: #E7EEFF">Work with me</div>
+    <h2 class="rv" style="margin: 0; font-size: clamp(46px, 7.4vw, 112px); font-weight: 800; letter-spacing: -0.045em; line-height: 0.95; text-wrap: balance">Let's make your team <span style="font-family: 'Instrument Serif', Georgia, serif; font-style: italic; font-weight: 400; letter-spacing: -0.01em">AI-fluent.</span></h2>
+    <p style="margin: 0; max-width: 560px; font-size: 19px; line-height: 1.55; color: #F0F4FF">For founders, CXOs and team leaders who want AI working inside the business, not sitting in a slide deck.</p>
+    <div style="display: flex; flex-wrap: wrap; gap: 16px">
+      <a class="btn" href="mailto:dasachin@xdotai.in" style="display: inline-flex; align-items: center; gap: 12px; min-height: 60px; padding: 0 32px; border-radius: 999px; background: #FFFFFF; color: #0A1A3F; text-decoration: none; font-weight: 600; font-size: 18px">Start a conversation
+        <svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" style="fill: none; stroke: currentColor; stroke-width: 2.4; stroke-linecap: round; stroke-linejoin: round"><path d="M5 12h14M13 6l6 6-6 6"></path></svg>
+      </a>
+    </div>
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(220px, 100%), 1fr)); gap: 0; margin-top: 28px; border-top: 1px solid rgba(255,255,255,0.45)">
+      <div style="padding: 22px 22px 0 0; display: flex; flex-direction: column; gap: 6px"><span style="font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: #E7EEFF">Email</span><a href="mailto:dasachin@xdotai.in" style="font-size: 18px; font-weight: 600">dasachin@xdotai.in</a></div>
+      <div style="padding: 22px 22px 0 0; display: flex; flex-direction: column; gap: 6px"><span style="font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: #E7EEFF">LinkedIn</span><a href="https://www.linkedin.com/in/dasachin/" style="font-size: 18px; font-weight: 600">in/dasachin</a></div>
+      <div style="padding: 22px 22px 0 0; display: flex; flex-direction: column; gap: 6px"><span style="font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: #E7EEFF">Instagram</span><a href="https://www.instagram.com/xdotai.in" style="font-size: 18px; font-weight: 600">@xdotai.in</a></div>
+      <div style="padding: 22px 0 0 0; display: flex; flex-direction: column; gap: 6px"><span style="font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: #E7EEFF">Company</span><a href="https://xdotai.in" style="font-size: 18px; font-weight: 600">xdotai.in</a></div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="onnavy" style="background: #061230; color: #A9B8DD">
+  <div style="max-width: 1200px; margin: 0 auto; padding: 32px clamp(20px, 4vw, 40px) 40px; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 16px; font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 12px; letter-spacing: 0.08em">
+    <span>Da Sachin Sharma · Mumbai, India</span>
+    <span>AI trainer · AI coach · Consultant · Author</span>
+  </div>
+</footer>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":8000}}'>
+class Component extends DCLogic {
+levels() {
+return [
+{ n: 4, par: 7, brief: 'Level 1. Connect the problem to the team.', s: 'E1pL1-L2-T0-L3-I3-L1-T3-T1-L3-I0-L3-T0-L1-L2-E0t' },
+{ n: 5, par: 12, brief: 'Level 2. Now the data has to reach it too.', s: 'I1-T0-L0-I0-E3dI0-L0-I3-T3-L1-E1pI0-T3-T0-L1-L3-L1-I3-L2-T1-L2-L0-L1-I0-E3t' },
+{ n: 5, par: 17, brief: 'Level 3. Problem, data, team and result. Wire them all.', s: 'E2pT3-T1-L3-E2dL1-I0-T0-I0-L1-L0-I0-T3-L3-T1-I3-L0-L3-I0-L1-E0tL3-I3-L1-E0r' }
+];
+}
+parse(L) {
+var out = [], names = { p: 'PROBLEM', d: 'DATA', t: 'TEAM', r: 'RESULT' }, i;
+for (i = 0; i < L.s.length; i += 3) {
+out.push({ t: L.s.charAt(i), r: parseInt(L.s.charAt(i + 1), 10), f: names[L.s.charAt(i + 2)] || '' });
+}
+return out;
+}
+gs() {
+var s = this.state || {}, Ls = this.levels();
+var lvl = Math.min(s.lvl || 0, Ls.length - 1), L = Ls[lvl], base = this.parse(L);
+var rots = s.rots || base.map(function (c) { return c.r; });
+return { lvl: lvl, L: L, base: base, rots: rots, moves: s.moves || 0, count: Ls.length };
+}
+power(g) {
+var BASE = { I: 5, L: 3, T: 7, X: 15, E: 1 }, n = g.L.n, m = [], i, src = 0;
+for (i = 0; i < g.base.length; i++) {
+var b = BASE[g.base[i].t], k = ((g.rots[i] % 4) + 4) % 4;
+while (k-- > 0) { b = ((b << 1) & 15) | (b >> 3); }
+m.push(b);
+if (g.base[i].f === 'PROBLEM') { src = i; }
+}
+var on = {}, stack = [src], dirs = [[1, -1, 0, 4], [2, 0, 1, 8], [4, 1, 0, 1], [8, 0, -1, 2]];
+on[src] = true;
+while (stack.length) {
+var cur = stack.pop(), r = Math.floor(cur / n), c = cur % n, d;
+for (d = 0; d < 4; d++) {
+if (m[cur] & dirs[d][0]) {
+var rr = r + dirs[d][1], cc = c + dirs[d][2];
+if (rr >= 0 && rr < n && cc >= 0 && cc < n) {
+var j = rr * n + cc;
+if ((m[j] & dirs[d][3]) && !on[j]) { on[j] = true; stack.push(j); }
+}
+}
+}
+}
+var sinks = 0, lit = 0;
+for (i = 0; i < g.base.length; i++) {
+if (g.base[i].f && g.base[i].f !== 'PROBLEM') { sinks++; if (on[i]) { lit++; } }
+}
+return { on: on, sinks: sinks, lit: lit, won: lit === sinks };
+}
+componentDidMount() {
+var self = this;
+setTimeout(function () { self.boot(); }, 80);
+}
+componentWillUnmount() {
+this._dead = true;
+if (this._raf) { cancelAnimationFrame(this._raf); }
+}
+boot() {
+var cv = this._cv || document.querySelector('canvas[data-dsp]');
+if (!cv || !cv.getContext || this._booted) { return; }
+this._booted = true;
+var self = this, ctx = cv.getContext('2d'), host = cv.parentElement;
+var N = 80, P = [], k;
+for (k = 0; k < N; k++) {
+P.push({ x: Math.random(), y: Math.random(), vx: (Math.random() - 0.5) * 0.0005, vy: (Math.random() - 0.5) * 0.0005, r: 1.4 + Math.random() * 1.8, near: 0, X: 0, Y: 0 });
+}
+var ptr = { x: 0, y: 0, on: false }, t0 = performance.now();
+host.addEventListener('pointermove', function (e) {
+var b = cv.getBoundingClientRect();
+ptr.x = e.clientX - b.left; ptr.y = e.clientY - b.top; ptr.on = true;
+});
+host.addEventListener('pointerleave', function () { ptr.on = false; });
+var still = !!(window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches);
+function frame(now) {
+if (self._dead) { return; }
+var w = cv.clientWidth, h = cv.clientHeight, d = Math.min(window.devicePixelRatio || 1, 2);
+if (cv.width !== Math.round(w * d) || cv.height !== Math.round(h * d)) { cv.width = Math.round(w * d); cv.height = Math.round(h * d); }
+ctx.setTransform(d, 0, 0, d, 0, 0);
+ctx.clearRect(0, 0, w, h);
+var px = ptr.x, py = ptr.y, t = (now - t0) / 1000;
+if (!ptr.on) { px = w * (0.5 + 0.36 * Math.sin(t * 0.23)); py = h * (0.5 + 0.3 * Math.sin(t * 0.31 + 1.3)); }
+var a, b2, i, j, dx, dy, dist, lim, al, m;
+for (i = 0; i < N; i++) {
+a = P[i];
+if (!still) {
+a.x += a.vx; a.y += a.vy;
+if (a.x < 0 || a.x > 1) { a.vx = -a.vx; }
+if (a.y < 0 || a.y > 1) { a.vy = -a.vy; }
+}
+a.X = a.x * w; a.Y = a.y * h;
+dx = px - a.X; dy = py - a.Y; dist = Math.sqrt(dx * dx + dy * dy);
+a.near = dist < 230 ? 1 - dist / 230 : 0;
+if (!still && a.near > 0) { a.x += (dx / w) * 0.003 * a.near; a.y += (dy / h) * 0.003 * a.near; }
+}
+ctx.lineWidth = 1;
+for (i = 0; i < N; i++) {
+a = P[i];
+for (j = i + 1; j < N; j++) {
+b2 = P[j];
+m = Math.max(a.near, b2.near);
+lim = 92 + 100 * m;
+dx = a.X - b2.X; dy = a.Y - b2.Y; dist = Math.sqrt(dx * dx + dy * dy);
+if (dist < lim) {
+al = (1 - dist / lim) * (0.12 + 0.55 * m);
+ctx.strokeStyle = 'rgba(27,59,255,' + al.toFixed(3) + ')';
+ctx.beginPath(); ctx.moveTo(a.X, a.Y); ctx.lineTo(b2.X, b2.Y); ctx.stroke();
+}
+}
+}
+for (i = 0; i < N; i++) {
+a = P[i];
+ctx.fillStyle = a.near > 0.05 ? 'rgba(27,59,255,0.95)' : 'rgba(27,59,255,0.28)';
+ctx.beginPath(); ctx.arc(a.X, a.Y, a.r + a.near * 1.8, 0, 6.2832); ctx.fill();
+}
+if (!still) { self._raf = requestAnimationFrame(frame); }
+}
+self._raf = requestAnimationFrame(frame);
+}
+renderVals() {
+var self = this;
+var a = (this.state && this.state.aud) || 'founder';
+var on = { bg: '#1B3BFF', fg: '#FFFFFF', bd: '#1B3BFF', pressed: 'true' };
+var off = { bg: '#FFFFFF', fg: '#0A1A3F', bd: '#C9D4EE', pressed: 'false' };
+function set(v) { return function () { self.setState({ aud: v }); }; }
+
+var g = this.gs(), pw = this.power(g), n = g.L.n;
+var PATHS = { I: 'M50 0 L50 100', L: 'M50 0 L50 50 L100 50', T: 'M50 0 L50 100 M50 50 L100 50', X: 'M50 0 L50 100 M0 50 L100 50', E: 'M50 0 L50 50' };
+function resetLevel() { self.setState({ rots: null, moves: 0 }); }
+var cells = g.base.map(function (c, idx) {
+var lit = !!pw.on[idx], fixed = !!c.f;
+return {
+d: PATHS[c.t],
+deg: (g.rots[idx] * 90) + 'deg',
+fixed: fixed,
+label: c.f,
+stroke: lit ? '#FFFFFF' : '#46598F',
+bg: lit ? '#1B3BFF' : '#12265A',
+bd: lit ? '#8FB0FF' : '#2A3A66',
+chipBg: lit ? '#FFFFFF' : '#C6D2EE',
+chipFg: '#061230',
+aria: (fixed ? c.f + ', fixed tile' : 'Pipe tile, press to turn') + (lit ? ', connected' : ', not connected'),
+turn: function () {
+var cur = self.gs();
+if (fixed || self.power(cur).won) { return; }
+var next = cur.rots.slice();
+next[idx] = next[idx] + 1;
+self.setState({ rots: next, moves: cur.moves + 1 });
+},
+key: function (e) {
+var k = e.key, t = -1, r = Math.floor(idx / n), col = idx % n;
+if (k === 'ArrowRight' && col < n - 1) { t = idx + 1; }
+else if (k === 'ArrowLeft' && col > 0) { t = idx - 1; }
+else if (k === 'ArrowDown' && r < n - 1) { t = idx + n; }
+else if (k === 'ArrowUp' && r > 0) { t = idx - n; }
+else if (k === 'r' || k === 'R') { resetLevel(); return; }
+if (k.indexOf('Arrow') === 0) { e.preventDefault(); }
+if (t >= 0) {
+var grid = e.currentTarget.closest('[data-grid]');
+var btns = grid ? grid.querySelectorAll('button.cell') : [];
+if (btns[t]) { btns[t].focus(); }
+}
+}
+};
+});
+var last = g.lvl >= g.count - 1;
+var rating = g.moves <= g.L.par ? 'Sharp thinking' : (g.moves <= Math.round(g.L.par * 1.6) ? 'Solid work' : 'You got there');
+var game = {
+n: String(n),
+level: (g.lvl + 1) + ' / ' + g.count,
+moves: String(g.moves),
+linked: pw.lit + ' / ' + pw.sinks,
+msgBg: pw.won ? '#8FB0FF' : '#12265A',
+msgFg: pw.won ? '#061230' : '#FFFFFF',
+msgTag: pw.won ? (rating + ' · ' + g.moves + ' moves, best is ' + g.L.par) : 'Your brief',
+msg: pw.won
+? (last ? 'All wired. That is the job: connect the real problem to data, to people, to a result.' : 'Connected. Nothing moved until the last link did.')
+: g.L.brief,
+showNext: pw.won && !last,
+showEnd: pw.won && last
+};
+return {
+cvRef: function (el) { if (el) { self._cv = el; } },
+t1: a === 'founder' ? on : off,
+t2: a === 'cxo' ? on : off,
+t3: a === 'brand' ? on : off,
+t4: a === 'agency' ? on : off,
+is1: a === 'founder',
+is2: a === 'cxo',
+is3: a === 'brand',
+is4: a === 'agency',
+pick1: set('founder'),
+pick2: set('cxo'),
+pick3: set('brand'),
+pick4: set('agency'),
+g: game,
+cells: cells,
+resetLevel: resetLevel,
+nextLevel: function () { self.setState({ lvl: self.gs().lvl + 1, rots: null, moves: 0 }); },
+restart: function () { self.setState({ lvl: 0, rots: null, moves: 0 }); }
+};
+}
+}
+</script>
+</body>
+</html>

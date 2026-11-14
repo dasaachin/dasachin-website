@@ -2,6 +2,14 @@
 
 Static website for Da Sachin Sharma: AI trainer, coach and consultant. No build step. Plain HTML, CSS and JavaScript.
 
+## Pages
+
+Home, `/services`, `/about`, `/books`, `/blog`, `/contact`.
+
+## Blog and Medium
+
+`/blog` and the home page list the latest Medium articles automatically. `api/medium.js` reads the Medium RSS feed of `@dasachin` (about the 10 most recent articles) and caches it for 30 minutes. Each article also opens inside the site at `/blog/medium/<slug>`, with its canonical link pointing to Medium. To change the Medium account, edit `FEED` in `api/_feed.js`.
+
 ## Files
 
 - `index.html`: the whole page, with SEO meta tags and schema.org data (Person, Organization, ProfessionalService, FAQPage, Book)

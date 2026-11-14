@@ -1,0 +1,28 @@
+name: Sync Medium stories
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '17 */6 * * *'
+  push:
+    branches: [main]
+    paths: ['content/.sync-medium']
+permissions:
+  contents: write
+concurrency: content-sync
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - run: node scripts/sync-medium.mjs
+      - name: Commit new stories
+        run: |
+          git config user.name "Da Sachin Sharma"
+          git config user.email "dasaachin@users.noreply.github.com"
+          git add content
+          git diff --cached --quiet || git commit -m "Add new stories from Medium"
+          git pull --rebase
+          git push

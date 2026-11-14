@@ -1,4 +1,37 @@
 {
   "cleanUrls": true,
-  "trailingSlash": false
+  "trailingSlash": false,
+  "rewrites": [
+    {
+      "source": "/blog/medium/:slug",
+      "destination": "/api/post?slug=:slug"
+    }
+  ],
+  "redirects": [
+    {
+      "source": "/about-me",
+      "destination": "/about",
+      "permanent": true
+    },
+    {
+      "source": "/publications",
+      "destination": "/books",
+      "permanent": true
+    },
+    {
+      "source": "/category/:c*",
+      "destination": "/blog",
+      "permanent": false
+    },
+    {
+      "source": "/page/:n",
+      "destination": "/blog",
+      "permanent": false
+    },
+    {
+      "source": "/:y(\\d{4})/:m(\\d{2})/:d(\\d{2})/:slug",
+      "destination": "/blog",
+      "permanent": false
+    }
+  ]
 }

@@ -1,0 +1,54 @@
+<section style="position: relative">
+  <div style="max-width: 1200px; margin: 0 auto; padding: 56px clamp(20px, 4vw, 40px) 96px; display: flex; flex-wrap: wrap; gap: 56px; align-items: flex-start">
+    <div style="flex: 1 1 400px; min-width: 0; display: flex; flex-direction: column; gap: 26px">
+      <div style="font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: #3D4C70">Start a conversation</div>
+      <h1 style="margin: 0; font-size: clamp(44px, 6vw, 84px); line-height: 0.98; font-weight: 800; letter-spacing: -0.045em; text-wrap: balance">Tell me the <span style="font-family: 'Instrument Serif', Georgia, serif; font-style: italic; font-weight: 400; letter-spacing: -0.01em; color: #1B3BFF">real problem.</span></h1>
+      <p style="margin: 0; max-width: 480px; font-size: 18px; line-height: 1.55; color: #33415F">Not the tool you think you need. The thing that is slow, expensive or stuck. That is where every engagement with me begins.</p>
+      <ol style="margin: 8px 0 0; padding: 0; list-style: none; display: flex; flex-direction: column; border-top: 2px solid #0A1A3F">
+        <li style="display: flex; gap: 20px; padding: 20px 0; border-bottom: 1px solid #C9D4EE"><span style="flex: none; width: 36px; font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 13px; color: #1B3BFF; padding-top: 3px">01</span><div style="display: flex; flex-direction: column; gap: 4px"><strong style="font-size: 18px">You write to me</strong><span style="font-size: 16px; line-height: 1.5; color: #3D4C70">A few lines on your business and what is not working.</span></div></li>
+        <li style="display: flex; gap: 20px; padding: 20px 0; border-bottom: 1px solid #C9D4EE"><span style="flex: none; width: 36px; font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 13px; color: #1B3BFF; padding-top: 3px">02</span><div style="display: flex; flex-direction: column; gap: 4px"><strong style="font-size: 18px">We talk, with the decision makers</strong><span style="font-size: 16px; line-height: 1.5; color: #3D4C70">A conversation to understand the business, its market and the real challenge.</span></div></li>
+        <li style="display: flex; gap: 20px; padding: 20px 0; border-bottom: 1px solid #C9D4EE"><span style="flex: none; width: 36px; font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 13px; color: #1B3BFF; padding-top: 3px">03</span><div style="display: flex; flex-direction: column; gap: 4px"><strong style="font-size: 18px">You get a plan that fits</strong><span style="font-size: 16px; line-height: 1.5; color: #3D4C70">Training, consulting, coaching or a custom tool, shaped around your team.</span></div></li>
+      </ol>
+      <div style="display: flex; flex-wrap: wrap; gap: 10px 28px; font-size: 16px">
+        <a href="https://www.linkedin.com/in/dasachin/" style="font-weight: 600">LinkedIn: in/dasachin</a>
+        <a href="https://xdotai.in" style="font-weight: 600">xdotai.in</a>
+      </div>
+    </div>
+
+    <div style="flex: 1.15 1 440px; min-width: 0">
+      <form id="contact-form" novalidate style="display: flex; flex-direction: column; gap: 20px; padding: clamp(24px, 3.4vw, 44px); border-radius: 28px; background: #FFFFFF; border: 1px solid #C9D4EE; box-shadow: 0 40px 80px -50px rgba(10,26,63,0.5)">
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(220px, 100%), 1fr)); gap: 20px">
+          <label class="fld"><span>Your name</span><input type="text" name="name" autocomplete="name" required maxlength="100"></label>
+          <label class="fld"><span>Work email</span><input type="email" name="email" autocomplete="email" required maxlength="160"></label>
+          <label class="fld"><span>Company</span><input type="text" name="company" autocomplete="organization" required maxlength="120"></label>
+          <label class="fld"><span>Your role <em>optional</em></span><input type="text" name="role" autocomplete="organization-title" maxlength="100"></label>
+          <label class="fld"><span>Phone or WhatsApp <em>optional</em></span><input type="tel" name="phone" autocomplete="tel" maxlength="30"></label>
+          <label class="fld"><span>Team size <em>optional</em></span>
+            <select name="team_size"><option value="">Select</option><option>1 to 10</option><option>11 to 50</option><option>51 to 200</option><option>200+</option></select>
+          </label>
+        </div>
+        <fieldset style="margin: 0; padding: 0; border: none; display: flex; flex-direction: column; gap: 10px">
+          <legend style="padding: 0; margin-bottom: 10px; font-size: 14px; font-weight: 600">What do you need?</legend>
+          <div class="chips" style="display: flex; flex-wrap: wrap; gap: 10px">
+            <label><input type="radio" name="need" value="AI training for teams" checked><span>AI training for teams</span></label>
+            <label><input type="radio" name="need" value="AI consulting for management"><span>AI consulting</span></label>
+            <label><input type="radio" name="need" value="Coaching for leaders"><span>Coaching for leaders</span></label>
+            <label><input type="radio" name="need" value="Custom AI tool"><span>Custom AI tool</span></label>
+            <label><input type="radio" name="need" value="Something else"><span>Something else</span></label>
+          </div>
+        </fieldset>
+        <label class="fld"><span>What is the real problem?</span><textarea name="message" rows="5" required maxlength="3000" placeholder="What is slow, expensive or stuck right now?"></textarea></label>
+        <input type="text" name="_honey" tabindex="-1" autocomplete="off" aria-hidden="true" style="position: absolute; left: -9999px; width: 1px; height: 1px; opacity: 0">
+        <div id="contact-error" role="alert" hidden style="padding: 14px 16px; border-radius: 12px; background: #0A1A3F; color: #FFFFFF; font-size: 15px; line-height: 1.5"></div>
+        <button type="submit" class="btn" id="contact-send" style="align-self: flex-start; display: inline-flex; align-items: center; gap: 12px; min-height: 56px; padding: 0 30px; border-radius: 999px; border: none; background: #1B3BFF; color: #FFFFFF; font: inherit; font-weight: 600; font-size: 17px; cursor: pointer">Send message</button>
+        <p style="margin: 0; font-size: 13.5px; line-height: 1.5; color: #3D4C70">Your details are used only to reply to this enquiry.</p>
+      </form>
+      <div id="contact-done" role="status" tabindex="-1" hidden style="padding: clamp(28px, 4vw, 56px); border-radius: 28px; background: #1B3BFF; color: #FFFFFF; display: flex; flex-direction: column; gap: 18px">
+        <div style="font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: #E7EEFF">Message sent</div>
+        <h2 style="margin: 0; font-size: clamp(36px, 4.4vw, 60px); font-weight: 800; letter-spacing: -0.04em; line-height: 1">Thank you. <span style="font-family: 'Instrument Serif', Georgia, serif; font-style: italic; font-weight: 400">Problem received.</span></h2>
+        <p style="margin: 0; font-size: 18px; line-height: 1.55; color: #F0F4FF">I read every message myself and will reply to you personally.</p>
+        <a href="/" style="align-self: flex-start; color: #FFFFFF; font-weight: 600">Back to the home page</a>
+      </div>
+    </div>
+  </div>
+</section>
