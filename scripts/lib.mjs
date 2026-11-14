@@ -56,7 +56,8 @@ export async function get(url, type = 'text') {
   let r;
   for (let attempt = 1; attempt <= (slow ? 6 : 1); attempt++) {
     if (slow) await sleep(attempt === 1 ? 4000 : 25000 * (attempt - 1));
-    r = await fetch(url, { headers: { 'User-Agent': UA, Accept: '*/*' }, redirect: 'follow' });
+    try { r = await fetch(url, { headers: { 'User-Agent': UA, Accept: '*/*' }, redirect: 'follow' }); }
+    catch (e) { if (!slow || attempt === 6) throw e; continue; }
     if (!(slow && (r.status === 429 || r.status === 503 || r.status === 504))) break;
   }
   if (!r.ok) throw new Error(`${r.status} ${r.statusText} for ${url}`);
