@@ -1,24 +1,20 @@
 REST API failed: 403 Forbidden for https://dasachin.com/wp-json/wp/v2/posts?per_page=50&page=1&_embed=1 - trying the RSS feed
 RSS feed failed: 404 Not Found for https://dasachin.com/feed/ - reading the Internet Archive copies
-  archive index for dasachin.com/20* failed: 503 Service Unavailable for https://web.archive.org/cdx/search/cdx?url=dasachin.
-  archive index for www.dasachin.com/20*: 13 posts so far
+  archive index for dasachin.com/20*: 13 posts so far
+  archive index for www.dasachin.com/20* failed: fetch failed
 Archive: 13 post URLs
-  read: /2019/06/26/gentle-morning
-  failed: /2019/06/26/summer-cool 429 Too Many Requests for https://web.archive.org/web/20230224050212id
-  failed: /2023/01/11/7-books-by-indian-authors-every-young-entrepreneur-marketing-professional-must-read 429 Too Many Requests for https://web.archive.org/web/20230224060953id
-  failed: /2023/01/11/beware-of-chauffeur-knowledge 429 Too Many Requests for https://web.archive.org/web/20230224075604id
-  failed: /2023/01/11/money-or-knowledge-skills 429 Too Many Requests for https://web.archive.org/web/20230224055939id
-  failed: /2023/01/11/simple-strategies-that-can-take-you-closer-to-your-dreams 429 Too Many Requests for https://web.archive.org/web/20230224071717id
-  failed: /2023/01/11/your-personality-is-the-only-way-to-your-success-make-sure-you-wear-it-right 429 Too Many Requests for https://web.archive.org/web/20230224073850id
-  failed: /2023/01/14/flying-high-lessons-from-kite-flying-for-entrepreneurship 429 Too Many Requests for https://web.archive.org/web/20230224044015id
-  failed: /2023/01/17/thriving-in-the-era-of-chatgpt-and-ai-a-guide-for-designers-and-writers 429 Too Many Requests for https://web.archive.org/web/20230224055222id
-  failed: /2023/05/19/say-hello-to-creativity-dot-ai-indias-first-ai-podcast 429 Too Many Requests for https://web.archive.org/web/20250920065611id
-  failed: /2023/05/19/stop-overpaying-uncover-the-massive-savings-with-ondc 429 Too Many Requests for https://web.archive.org/web/20230519100216id
-  failed: /2023/08/11/dot-ai 429 Too Many Requests for https://web.archive.org/web/20250920055325id
-  failed: /2023/08/11/prompt-dot-ai 429 Too Many Requests for https://web.archive.org/web/20250920062625id
-- The Power of Perspective: How Your Mindset Affects Your Perception
-  image skipped: https://web.archive.org/web/20230224052502im_/https://dakaizen.com/dademo/wp-content/uploads/2019/06/change-1170x690.jpg 429 Too Many Requests for https://web.archive.org/web/20230224052502im_/https://dakaizen.com/dademo/wp-content/uploads/2019/06/change-1170x690.jpg
-  image skipped: https://web.archive.org/web/20230224052502im_/https://dakaizen.com/dademo/wp-content/uploads/2023/01/dasachin_artificial_intellegence_bringing_brightness_to_the_wor_165911eb-2e15-4d1b-ba36-21b2f0378235-1024x690.png 429 Too Many Requests for https://web.archive.org/web/20230224052502im_/https://dakaizen.com/dademo/wp-content/uploads/2023/01/dasachin_artificial_intellegence_bringing_brightness_to_the_wor_165911eb-2e15-4d1b-ba36-21b2f0378235-1024x690.png
-  image skipped: https://web.archive.org/web/20230224052502im_/https://dakaizen.com/dademo/wp-content/uploads/2023/01/dasachin_artificial_intellegence_bringing_darkness_to_the_world_8410f4c6-efca-48e5-8267-87868e4047b0-1024x690.png 429 Too Many Requests for https://web.archive.org/web/20230224052502im_/https://dakaizen.com/dademo/wp-content/uploads/2023/01/dasachin_artificial_intellegence_bringing_darkness_to_the_world_8410f4c6-efca-48e5-8267-87868e4047b0-1024x690.png
-  image skipped: https://web.archive.org/web/20230224052502im_/https://dasachin.com/wp-content/uploads/2023/01/dasachin_artificial_intellegence_bringing_brightness_to_the_wor_165911eb-2e15-4d1b-ba36-21b2f0378235-845x550.png 429 Too Many Requests for https://web.archive.org/web/20230224052502im_/https://dasachin.com/wp-content/uploads/2023/01/dasachin_artificial_intellegence_bringing_brightness_to_the_wor_165911eb-2e15-4d1b-ba36-21b2f0378235-845x550.png
-Imported 1 posts.
+  failed: /2019/06/26/gentle-morning fetch failed
+  failed: /2019/06/26/summer-cool fetch failed
+  failed: /2023/01/11/7-books-by-indian-authors-every-young-entrepreneur-marketing-professional-must-read fetch failed
+  failed: /2023/01/11/beware-of-chauffeur-knowledge fetch failed
+  failed: /2023/01/11/money-or-knowledge-skills fetch failed
+  failed: /2023/01/11/simple-strategies-that-can-take-you-closer-to-your-dreams fetch failed
+  failed: /2023/01/11/your-personality-is-the-only-way-to-your-success-make-sure-you-wear-it-right fetch failed
+  failed: /2023/01/14/flying-high-lessons-from-kite-flying-for-entrepreneurship fetch failed
+  failed: /2023/01/17/thriving-in-the-era-of-chatgpt-and-ai-a-guide-for-designers-and-writers fetch failed
+  failed: /2023/05/19/say-hello-to-creativity-dot-ai-indias-first-ai-podcast fetch failed
+  failed: /2023/05/19/stop-overpaying-uncover-the-massive-savings-with-ondc fetch failed
+  failed: /2023/08/11/dot-ai fetch failed
+  failed: /2023/08/11/prompt-dot-ai fetch failed
+No posts found.
+IMPORT FAILED
