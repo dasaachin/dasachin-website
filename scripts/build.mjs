@@ -4,7 +4,7 @@ import path from 'node:path';
 import { ROOT, MEDIA, loadPosts, esc } from './lib.mjs';
 
 const DIST = path.join(ROOT, 'dist');
-const URL_ = 'https://dasachin.com/';
+const URL_ = 'https://www.dasachin.com/';
 const MONO = "font-family: 'JetBrains Mono', ui-monospace, monospace;";
 const SERIF = "font-family: 'Instrument Serif', Georgia, serif; font-style: italic; font-weight: 400; letter-spacing: -0.01em;";
 fs.rmSync(DIST, { recursive: true, force: true });

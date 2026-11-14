@@ -15,7 +15,8 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: 22
-      - run: node scripts/import-wordpress.mjs
+      - name: Import (the log is saved to content/import-log.txt)
+        run: node scripts/import-wordpress.mjs > content/import-log.txt 2>&1 || echo "IMPORT FAILED" >> content/import-log.txt
       - name: Commit imported posts
         run: |
           git config user.name "Da Sachin Sharma"

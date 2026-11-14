@@ -5,7 +5,7 @@ import path from 'node:path';
 export const ROOT = path.resolve(path.dirname(new URL(import.meta.url).pathname), '..');
 export const POSTS = path.join(ROOT, 'content', 'posts');
 export const MEDIA = path.join(ROOT, 'content', 'media');
-export const UA = 'Mozilla/5.0 (compatible; dasachin.com-sync/1.0; +https://dasachin.com)';
+export const UA = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0 Safari/537.36';
 
 const ENT = { amp: '&', lt: '<', gt: '>', quot: '"', apos: "'", nbsp: ' ', hellip: '…', rsquo: '’', lsquo: '‘', rdquo: '”', ldquo: '“', ndash: '–', mdash: '-' };
 export function decode(s = '') {
