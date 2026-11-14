@@ -1,0 +1,13 @@
+REST API failed: 403 Forbidden for https://dasachin.com/wp-json/wp/v2/posts?per_page=50&page=1&_embed=1 - trying the RSS feed
+file:///home/runner/work/dasachin-website/dasachin-website/scripts/lib.mjs:54
+  if (!r.ok) throw new Error(`${r.status} ${r.statusText} for ${url}`);
+                   ^
+
+Error: 404 Not Found for https://dasachin.com/feed/?paged=1
+    at get (file:///home/runner/work/dasachin-website/dasachin-website/scripts/lib.mjs:54:20)
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    at async viaFeed (file:///home/runner/work/dasachin-website/dasachin-website/scripts/import-wordpress.mjs:29:18)
+    at async file:///home/runner/work/dasachin-website/dasachin-website/scripts/import-wordpress.mjs:45:91
+
+Node.js v22.23.4
+IMPORT FAILED
