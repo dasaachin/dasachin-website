@@ -1,13 +1,36 @@
 REST API failed: 403 Forbidden for https://dasachin.com/wp-json/wp/v2/posts?per_page=50&page=1&_embed=1 - trying the RSS feed
-file:///home/runner/work/dasachin-website/dasachin-website/scripts/lib.mjs:54
-  if (!r.ok) throw new Error(`${r.status} ${r.statusText} for ${url}`);
-                   ^
-
-Error: 404 Not Found for https://dasachin.com/feed/?paged=1
-    at get (file:///home/runner/work/dasachin-website/dasachin-website/scripts/lib.mjs:54:20)
-    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
-    at async viaFeed (file:///home/runner/work/dasachin-website/dasachin-website/scripts/import-wordpress.mjs:29:18)
-    at async file:///home/runner/work/dasachin-website/dasachin-website/scripts/import-wordpress.mjs:45:91
-
-Node.js v22.23.4
+RSS feed failed: 404 Not Found for https://dasachin.com/feed/ - reading the pages directly
+  /wp-sitemap-posts-post-1.xml: 404 Not Found for https://dasachin.com/w
+  /post-sitemap.xml: 404 Not Found for https://dasachin.com/p
+  /sitemap.xml: 0 links
+  /sitemap_index.xml: 404 Not Found for https://dasachin.com/s
+  /: 0 links
+  /category/ai/: 0 links
+  /category/business/: 0 links
+  /category/creativity/: 0 links
+  /category/lifestyle/: 0 links
+  /category/fashion/: 0 links
+  /page/2/: 0 links
+  /?paged=2: 0 links
+  /category/ai/page/2/: 0 links
+  /page/3/: 0 links
+  /?paged=3: 0 links
+  /category/ai/page/3/: 0 links
+  /page/4/: 0 links
+  /?paged=4: 0 links
+  /category/ai/page/4/: 0 links
+  /page/5/: 0 links
+  /?paged=5: 0 links
+  /category/ai/page/5/: 0 links
+  /page/6/: 0 links
+  /?paged=6: 0 links
+  /category/ai/page/6/: 0 links
+  /page/7/: 0 links
+  /?paged=7: 0 links
+  /category/ai/page/7/: 0 links
+  /page/8/: 0 links
+  /?paged=8: 0 links
+  /category/ai/page/8/: 0 links
+Crawl: 0 post URLs
+No posts found.
 IMPORT FAILED
