@@ -60,6 +60,27 @@ img{max-width:100%}
 @media (prefers-reduced-motion:no-preference){.pop{animation:pop .35s ease-out both}}
 @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
 .skip{position:absolute;left:-9999px;top:0;background:#0A1A3F;color:#fff;padding:12px 18px;z-index:10}.skip:focus{left:12px;top:12px}
+@media (max-width:1339px){.sticks-side{display:none}.sticks-row{display:flex !important}}
+@keyframes st-point{0%,100%{transform:rotate(6deg)}50%{transform:rotate(-14deg)}}
+@keyframes st-draw{0%{stroke-dashoffset:100}55%,100%{stroke-dashoffset:0}}
+@keyframes st-bob{0%,100%{transform:translateY(0)}50%{transform:translateY(-3px)}}
+@keyframes st-grow{0%,100%{transform:scaleY(.35)}55%,80%{transform:scaleY(1)}}
+@keyframes st-blink{0%,45%{opacity:1}55%,100%{opacity:.12}}
+@keyframes st-drop{0%{transform:translateY(-46px);opacity:0}30%,88%{transform:translateY(0);opacity:1}100%{transform:translateY(0);opacity:0}}
+@keyframes st-pop{0%,45%{transform:scale(0) rotate(-40deg);opacity:0}62%{transform:scale(1.25) rotate(0);opacity:1}72%,90%{transform:scale(1);opacity:1}100%{opacity:0}}
+@keyframes st-tap{0%,100%{transform:rotate(0)}50%{transform:rotate(9deg)}}
+@keyframes st-float{0%{transform:translateY(16px);opacity:0}25%,70%{opacity:1}100%{transform:translateY(-16px);opacity:0}}
+@keyframes st-clap{0%,62%,100%{transform:rotate(-24deg)}70%,78%{transform:rotate(0)}}
+.st-draw{stroke-dasharray:100;stroke-dashoffset:0}
+@media (prefers-reduced-motion:no-preference){
+.st-point{animation:st-point 2.4s ease-in-out infinite}.st-draw{animation:st-draw 4s ease-in-out infinite}
+.st-bob{animation:st-bob 1.8s ease-in-out infinite}.st-grow{animation:st-grow 4s ease-in-out infinite}
+.st-blink{animation:st-blink 2.6s ease-in-out infinite}.st-drop{animation:st-drop 4.5s ease-out infinite}
+.st-pop{animation:st-pop 4.5s ease-out infinite}.st-tap{animation:st-tap .45s ease-in-out infinite}
+.st-float{animation:st-float 3.6s ease-in-out infinite}.st-spin{animation:spin 5s linear infinite}
+.st-clap{animation:st-clap 2.8s ease-in infinite}
+.st-d1{animation-delay:-.9s}.st-d2{animation-delay:-1.8s}
+}
 .mnav{display:none;position:static}.mnav summary{cursor:pointer}.mnav a:hover{background:#E7EEFF}
 @media (max-width:760px){.mnav{display:block}}
 .prose iframe{display:block;width:100%;aspect-ratio:16/9;border:0;border-radius:16px;margin:2em 0}
