@@ -81,6 +81,9 @@ img{max-width:100%}
 .st-clap{animation:st-clap 2.8s ease-in infinite}
 .st-d1{animation-delay:-.9s}.st-d2{animation-delay:-1.8s}
 }
+.ar-dim{display:flex;flex-direction:column;gap:4px;padding:16px 18px;border-radius:16px;background:#F5F8FD;border:1px solid #DCE4F5;font-size:16px}.ar-dim span{font-size:14.5px;color:#3D4C70}
+@media print{header,footer,.noprint,#contact,.skip{display:none !important}#ar-app{box-shadow:none !important;border:none !important}body{background:#fff !important}}
+@media print{header,footer,#contact,.noprint,.skip{display:none !important}body{background:#fff}}
 .mnav{display:none;position:static}.mnav summary{cursor:pointer}.mnav a:hover{background:#E7EEFF}
 @media (max-width:760px){.mnav{display:block}}
 .prose iframe{display:block;width:100%;aspect-ratio:16/9;border:0;border-radius:16px;margin:2em 0}

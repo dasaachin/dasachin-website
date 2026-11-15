@@ -84,7 +84,7 @@ posts.forEach((p, i) => {
 
 // ---- sitemap and feed
 const today = new Date().toISOString().slice(0, 10);
-const urls = [['', today, '1.0'], ['services', today, '0.9'], ['about', today, '0.8'], ['books', today, '0.7'], ['blog', today, '0.8'], ['contact', today, '0.8']]
+const urls = [['', today, '1.0'], ['services', today, '0.9'], ['about', today, '0.8'], ['books', today, '0.7'], ['blog', today, '0.8'], ['ai-readiness', today, '0.9'], ['contact', today, '0.8']]
   .concat(posts.map((p) => [p.path, p.date.slice(0, 10), '0.6']));
 fs.writeFileSync(path.join(DIST, 'sitemap.xml'), `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${urls.map(([u, d, pr]) => `  <url><loc>${URL_}${u}</loc><lastmod>${d}</lastmod><priority>${pr}</priority></url>`).join('\n')}\n</urlset>\n`);
 fs.writeFileSync(path.join(DIST, 'feed.xml'), `<?xml version="1.0" encoding="UTF-8"?>\n<rss version="2.0"><channel><title>Da Sachin Sharma</title><link>${URL_}blog</link><description>Notes on AI, brands and creative work.</description>\n${posts.slice(0, 30).map((p) => `<item><title>${esc(p.title)}</title><link>${URL_}${p.path}</link><guid>${URL_}${p.path}</guid><pubDate>${new Date(p.date).toUTCString()}</pubDate><description>${esc(p.excerpt || '')}</description></item>`).join('\n')}\n</channel></rss>\n`);

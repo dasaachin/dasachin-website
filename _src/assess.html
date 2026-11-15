@@ -1,0 +1,40 @@
+<section style="background: #F5F8FD">
+  <div style="max-width: 980px; margin: 0 auto; padding: 48px clamp(20px, 4vw, 40px) 96px">
+    <div id="as-intro" style="display: flex; flex-direction: column; gap: 26px">
+      <div style="font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: #3D4C70">AI readiness assessment · free</div>
+      <h1 style="margin: 0; font-size: clamp(44px, 6.4vw, 92px); line-height: 0.98; font-weight: 800; letter-spacing: -0.045em; text-wrap: balance">How AI-ready is your <span style="font-family: 'Instrument Serif', Georgia, serif; font-style: italic; font-weight: 400; letter-spacing: -0.01em; color: #1B3BFF">company?</span></h1>
+      <p style="margin: 0; max-width: 640px; font-size: clamp(17px, 1.5vw, 20px); line-height: 1.55; color: #33415F">Fifteen questions about how your business actually works today. You get a score for five areas, what is holding you back, and a 90-day plan in order of priority.</p>
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(200px, 100%), 1fr)); border-top: 2px solid #0A1A3F">
+        <div style="padding: 20px 20px 20px 0; display: flex; flex-direction: column; gap: 4px"><strong style="font-size: 34px; letter-spacing: -0.03em">15</strong><span style="font-size: 15px; color: #3D4C70">questions, about 5 minutes</span></div>
+        <div style="padding: 20px; display: flex; flex-direction: column; gap: 4px; border-left: 1px solid #C9D4EE"><strong style="font-size: 34px; letter-spacing: -0.03em">5</strong><span style="font-size: 15px; color: #3D4C70">areas scored separately</span></div>
+        <div style="padding: 20px; display: flex; flex-direction: column; gap: 4px; border-left: 1px solid #C9D4EE"><strong style="font-size: 34px; letter-spacing: -0.03em">1</strong><span style="font-size: 15px; color: #3D4C70">detailed report, shown instantly</span></div>
+      </div>
+      <fieldset style="margin: 0; padding: 0; border: none; display: flex; flex-direction: column; gap: 12px">
+        <legend style="padding: 0; margin-bottom: 12px; font-size: 15px; font-weight: 600">How many people work in the company?</legend>
+        <div class="chips" id="as-size" style="display: flex; flex-wrap: wrap; gap: 10px">
+          <label><input type="radio" name="as-size" value="1 to 10"><span>1 to 10</span></label>
+          <label><input type="radio" name="as-size" value="11 to 50" checked><span>11 to 50</span></label>
+          <label><input type="radio" name="as-size" value="51 to 200"><span>51 to 200</span></label>
+          <label><input type="radio" name="as-size" value="200+"><span>200+</span></label>
+        </div>
+      </fieldset>
+      <div style="display: flex; flex-wrap: wrap; align-items: center; gap: 18px">
+        <button type="button" class="btn" id="as-start" style="display: inline-flex; align-items: center; min-height: 58px; padding: 0 32px; border-radius: 999px; border: none; background: #1B3BFF; color: #FFFFFF; font: inherit; font-weight: 600; font-size: 18px; cursor: pointer">Start the assessment</button>
+        <span style="font-size: 14px; color: #3D4C70">No sign-up. Your answers stay in your browser unless you choose to send the report.</span>
+      </div>
+      <p style="margin: 0; max-width: 640px; font-size: 14px; line-height: 1.55; color: #3D4C70">This is a self-assessment. The result is only as accurate as your answers, so answer for how things are today, not how you plan them to be.</p>
+    </div>
+
+    <div id="as-quiz" hidden style="display: flex; flex-direction: column; gap: 28px">
+      <div style="display: flex; flex-direction: column; gap: 12px">
+        <div style="display: flex; justify-content: space-between; gap: 16px; font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 12px; letter-spacing: 0.12em; text-transform: uppercase; color: #3D4C70"><span id="as-count"></span><span id="as-dim" style="color: #1B3BFF"></span></div>
+        <div role="progressbar" aria-label="Progress" id="as-prog" aria-valuemin="0" aria-valuemax="15" style="height: 8px; border-radius: 999px; background: #D5E2FF; overflow: hidden"><div id="as-bar" style="height: 100%; width: 0; background: #1B3BFF; border-radius: 999px; transition: width .35s ease"></div></div>
+      </div>
+      <h2 id="as-q" tabindex="-1" style="margin: 0; font-family: 'Instrument Serif', Georgia, serif; font-weight: 400; font-size: clamp(30px, 4vw, 50px); line-height: 1.08; text-wrap: balance; outline: none"></h2>
+      <div id="as-opts" style="display: flex; flex-direction: column; gap: 12px"></div>
+      <div><button type="button" id="as-back" style="min-height: 46px; padding: 0 20px; border-radius: 999px; border: 1.5px solid #0A1A3F; background: transparent; color: #0A1A3F; font: inherit; font-weight: 600; font-size: 15px; cursor: pointer">Back</button></div>
+    </div>
+
+    <div id="as-report" hidden></div>
+  </div>
+</section>

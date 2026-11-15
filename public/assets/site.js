@@ -400,4 +400,190 @@
       if (wrap) { wrap.hidden = false; }
     }).catch(none);
   })();
+  /* ---------- AI readiness assessment ---------- */
+  (function () {
+    if (!$('as-intro')) { return; }
+    var DIMS = [
+      { k: 'Leadership and strategy', svc: 'AI consulting for managements', why: 'The first gap is at the top: AI needs an owner, a budget and a business reason before any tool is chosen.',
+        d: ['AI has no owner and no place in the plan yet. Until leadership names what AI is for, every tool bought is a guess.', 'Leadership is interested and some priorities exist, but ownership, budget or targets are still loose. Work starts and stalls.', 'AI has an owner, money and a business reason. This is the foundation the other four areas are built on.'] },
+      { k: 'Problem clarity', svc: 'A Diagnose and Define session', why: 'The first gap is the brief: the business problems AI should solve are not yet named and measured.',
+        d: ['The company wants to "use AI" but has not named the problems it should solve. This is the most common reason AI projects fail.', 'You know roughly where AI could help, but the problems are not measured, so nobody can say later whether it worked.', 'You can name the problems, you know how the work is done today, and you have numbers to move. Solutions can be designed against something real.'] },
+      { k: 'Data, tools and workflow', svc: 'Custom AI tools and workflows', why: 'The first gap is in the plumbing: information is scattered and AI use has not become a repeatable workflow.',
+        d: ['The information AI needs is in people\'s heads and inboxes, and tool use is individual. Results cannot be repeated or shared.', 'Some tools and organised material are in place, but AI is still an experiment for most work, not a documented way of working.', 'Your material is organised, tools are chosen deliberately and at least some AI workflows are part of regular work.'] },
+      { k: 'People and skills', svc: 'AI training for teams', why: 'The first gap is in the team: people have not been trained on their own work, so usage depends on a few enthusiasts.',
+        d: ['Few people use AI and nobody has been trained. Any workflow you build will sit unused until that changes.', 'Some people use AI and want direction. Without hands-on training on their real work, usage stays uneven.', 'Most of the team uses AI with confidence and shares what works. This is what makes results last.'] },
+      { k: 'Guardrails and measurement', svc: 'AI consulting for managements', why: 'The first gap is control: there are no clear rules, review steps or measures for AI work.',
+        d: ['There are no rules for what goes into AI tools, no defined review, and no measurement. This is a risk to client data and to the brand.', 'There is some guidance and some review, but it depends on the person. Results are known through stories, not numbers.', 'People know the rules, output is reviewed before it goes out, and results are tracked against business numbers.'] }
+    ];
+    var QS = [
+      [0, 'How does your leadership team deal with AI today?', ['It has not come up seriously', 'We discuss it, but nobody owns it', 'One leader owns it, with a few stated priorities', 'It is in the business plan, with an owner, budget and targets'], 'Name one leader who owns AI, and write down the two or three business outcomes it must support this year.'],
+      [0, 'Is money and time set aside for AI work?', ['No budget and no time', 'Ad hoc: people pay for tools themselves and fit it in where they can', 'A budget for pilots this year', 'A recurring budget and protected time for teams'], 'Set a small pilot budget and protect a few hours a week for the people running it.'],
+      [0, 'If AI saved a team ten hours a week, do you know where those hours should go?', ['We have not thought about it', 'A rough idea', 'Clear for one or two teams', 'Yes, tied to growth or cost targets'], 'Decide in advance what saved time is for: more output, faster delivery or new work. Otherwise the saving disappears.'],
+      [1, 'Can you name the top three business problems you want AI to solve?', ['No, we just want to use AI', 'One, loosely', 'Yes, but they are not measured', 'Yes, each with a number we want to move'], 'Run a working session with decision makers to list where time and money leak, and pick three problems worth solving.'],
+      [1, 'How do AI ideas get chosen?', ['Whichever tool is trending', 'Whoever is most excited about it', 'By likely impact, informally', 'A shortlist scored on impact, effort and risk'], 'Score every AI idea on impact, effort and risk, and start with the one that wins on all three.'],
+      [1, 'Do you know how the work is done today in the areas you want to improve: steps, time and cost?', ['No', 'Roughly, from memory', 'Documented for some processes', 'Measured, with a baseline'], 'Map the current steps and time for one process before changing it, so you have a baseline to compare against.'],
+      [2, 'Where does the information AI would need live: brand guidelines, product data, past work, customer queries?', ['In people\'s heads and chats', 'Scattered across drives and inboxes', 'Mostly organised, with gaps', 'Organised, current and easy to give to a tool'], 'Collect brand guidelines, product information and your best past work in one shared place. AI can only be as good as what you give it.'],
+      [2, 'Which AI tools does the company use?', ['None', 'Personal accounts, each person their own', 'Company accounts for a few tools', 'A chosen set, with shared prompts, templates or custom workflows'], 'Choose a small set of tools on company accounts and build shared prompts and templates for your most repeated tasks.'],
+      [2, 'Has any AI workflow become part of regular work, not a one-off experiment?', ['No', 'For a few individuals', 'One team uses one regularly', 'Several teams, with documented steps'], 'Take one experiment that worked, document the steps and make it the standard way one team does that task.'],
+      [3, 'How many of the people who could benefit use AI at least weekly?', ['Almost none', 'A few enthusiasts', 'About half', 'Most of them'], 'Pick the two or three tasks every team member does weekly and show each person how AI fits into exactly those.'],
+      [3, 'What AI training has the team had?', ['None', 'Self-taught, from videos and articles', 'A one-time workshop', 'Hands-on training on our own work, with follow-up'], 'Train the team hands-on, on their own real work, with a follow-up session. One-time workshops are forgotten within a week.'],
+      [3, 'How do people feel about AI at work?', ['Worried or resistant', 'Curious, but unsure where to start', 'Willing and waiting for direction', 'Confident and sharing what works'], 'Address the fear directly: show what AI changes in each role and what it does not, and let people try it on low-risk work first.'],
+      [4, 'Are there rules for AI use: confidential data, client information, disclosure?', ['None', 'Unwritten common sense', 'Some written guidance', 'A clear policy that people know and follow'], 'Write a one-page AI use policy: what may never be pasted into a tool, which tools are approved and when to tell a client.'],
+      [4, 'Who checks AI output before it goes out?', ['Nobody in particular', 'It depends on the person', 'A reviewer for important work', 'Defined review steps for brand, facts and legal'], 'Define who reviews AI output for brand, facts and legal risk before anything reaches a client or the public.'],
+      [4, 'Do you measure results from AI work?', ['No', 'Only through stories', 'Time saved is tracked on some tasks', 'Tracked against business numbers and reviewed regularly'], 'Track one number per AI workflow, such as hours saved or turnaround time, and review it monthly.']
+    ];
+    var LEVELS = [
+      [0, 'Exploring', 'AI is still an idea in your company, not a way of working. That is a fine place to start, as long as you start with the business problem and not with a tool.'],
+      [35, 'Experimenting', 'People are trying things, but the effort is scattered. Individual wins are not turning into company results because the basics underneath are missing.'],
+      [60, 'Building', 'The foundations are in place and some AI work is real. The job now is to close the weakest area so that what works in one team spreads to the rest.'],
+      [80, 'Scaling', 'AI is part of how your company works. Your gains now come from depth: custom workflows, sharper measurement and keeping the team ahead.']
+    ];
+    var KEY = 'dss-ai-readiness-v1', ans = [], size = '11 to 50', cur = 0;
+    try { var sv = JSON.parse(localStorage.getItem(KEY) || 'null'); if (sv && sv.ans && sv.ans.length === QS.length) { ans = sv.ans; size = sv.size || size; } } catch (e) { /* storage unavailable */ }
+    function save() { try { localStorage.setItem(KEY, JSON.stringify({ ans: ans, size: size })); } catch (e) { /* ignore */ } }
+    function el(tag, css, text) { var e = document.createElement(tag); if (css) { e.style.cssText = css; } if (text != null) { e.textContent = text; } return e; }
+    function add(p) { for (var i = 1; i < arguments.length; i++) { if (arguments[i]) { p.appendChild(arguments[i]); } } return p; }
+    var MONO = "font-family:'JetBrains Mono',ui-monospace,monospace;", SERIF = "font-family:'Instrument Serif',Georgia,serif;";
+    var EB = MONO + 'font-size:12px;letter-spacing:.14em;text-transform:uppercase;';
+    function show(id) { ['as-intro', 'as-quiz', 'as-report'].forEach(function (x) { $(x).hidden = x !== id; }); window.scrollTo({ top: 0, behavior: 'auto' }); }
+
+    function ask() {
+      var q = QS[cur];
+      $('as-count').textContent = 'Question ' + (cur + 1) + ' of ' + QS.length;
+      $('as-dim').textContent = DIMS[q[0]].k;
+      $('as-bar').style.width = (cur / QS.length * 100) + '%';
+      $('as-prog').setAttribute('aria-valuenow', String(cur));
+      $('as-q').textContent = q[1];
+      var box = $('as-opts'); box.textContent = '';
+      q[2].forEach(function (label, i) {
+        var on = ans[cur] === i;
+        var b = el('button', 'display:flex;align-items:center;gap:16px;width:100%;min-height:64px;padding:14px 20px;border-radius:16px;border:1.5px solid ' + (on ? '#1B3BFF' : '#C9D4EE') + ';background:' + (on ? '#1B3BFF' : '#FFFFFF') + ';color:' + (on ? '#FFFFFF' : '#0A1A3F') + ';font:inherit;font-size:17px;line-height:1.4;text-align:left;cursor:pointer');
+        b.type = 'button'; b.className = 'opt'; b.setAttribute('aria-pressed', on ? 'true' : 'false');
+        add(b, el('span', 'flex:none;width:34px;height:34px;border-radius:50%;border:1.5px solid currentColor;display:flex;align-items:center;justify-content:center;font-size:13px;' + MONO, String(i + 1)), el('span', 'flex:1;min-width:0', label));
+        b.addEventListener('click', function () { ans[cur] = i; save(); if (cur < QS.length - 1) { cur += 1; ask(); $('as-q').focus(); } else { report(); } });
+        box.appendChild(b);
+      });
+      $('as-back').textContent = cur === 0 ? 'Back to start' : 'Back';
+    }
+    $('as-back').addEventListener('click', function () { if (cur === 0) { show('as-intro'); } else { cur -= 1; ask(); } });
+    $('as-start').addEventListener('click', function () {
+      var c = document.querySelector('#as-size input:checked'); size = c ? c.value : size;
+      ans = []; cur = 0; save(); show('as-quiz'); ask(); $('as-q').focus();
+    });
+
+    function calc() {
+      var dim = DIMS.map(function () { return 0; }), total = 0;
+      QS.forEach(function (q, i) { dim[q[0]] += ans[i]; total += ans[i]; });
+      var pct = Math.round(total / (QS.length * 3) * 100), lvl = LEVELS[0];
+      LEVELS.forEach(function (l) { if (pct >= l[0]) { lvl = l; } });
+      var dims = dim.map(function (v, i) { return { i: i, name: DIMS[i].k, pct: Math.round(v / 9 * 100), band: v <= 3 ? 0 : (v <= 6 ? 1 : 2) }; });
+      var order = dims.slice().sort(function (a, b) { return a.pct - b.pct || a.i - b.i; });
+      var gaps = QS.map(function (q, i) { return { i: i, s: ans[i], d: q[0], fix: q[3] }; }).filter(function (g) { return g.s < 3; })
+        .sort(function (a, b) { return a.s - b.s || order.findIndex(function (o) { return o.i === a.d; }) - order.findIndex(function (o) { return o.i === b.d; }) || a.i - b.i; });
+      return { pct: pct, total: total, lvl: lvl, dims: dims, weakest: order[0], strongest: order[order.length - 1], gaps: gaps };
+    }
+    function summary(r) {
+      var L = ['AI readiness report (dasachin.com)', 'Company size: ' + size, 'Overall: ' + r.pct + ' / 100 (' + r.lvl[1] + ')', ''];
+      r.dims.forEach(function (d) { L.push(d.name + ': ' + d.pct + '%'); });
+      L.push('', 'Weakest area: ' + r.weakest.name, 'Suggested starting point: ' + DIMS[r.weakest.i].svc, '', 'Priority actions:');
+      r.gaps.slice(0, 6).forEach(function (g, n) { L.push((n + 1) + '. ' + g.fix); });
+      L.push('', 'Answers (0 to 3 each): ' + ans.join(' '));
+      return L.join('\n');
+    }
+    function report() {
+      var r = calc(), R = $('as-report'); R.textContent = '';
+      R.style.cssText = 'display:flex;flex-direction:column;gap:56px';
+      // header
+      var C = 2 * Math.PI * 54, ring = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+      ring.setAttribute('viewBox', '0 0 120 120'); ring.setAttribute('role', 'img'); ring.setAttribute('aria-label', 'Score ' + r.pct + ' out of 100'); ring.style.cssText = 'width:min(220px,60vw);height:auto;flex:none';
+      ring.innerHTML = '<circle cx="60" cy="60" r="54" fill="none" stroke="#D5E2FF" stroke-width="10"></circle><circle cx="60" cy="60" r="54" fill="none" stroke="#1B3BFF" stroke-width="10" stroke-linecap="round" stroke-dasharray="' + (C * r.pct / 100).toFixed(1) + ' ' + C.toFixed(1) + '" transform="rotate(-90 60 60)"></circle><text x="60" y="66" text-anchor="middle" style="font:800 34px \'Bricolage Grotesque\',system-ui,sans-serif;fill:#0A1A3F;letter-spacing:-1px">' + r.pct + '</text><text x="60" y="84" text-anchor="middle" style="font:500 9px \'JetBrains Mono\',monospace;fill:#3D4C70;letter-spacing:1px">OUT OF 100</text>';
+      var head = el('div', 'display:flex;flex-wrap:wrap;align-items:center;gap:clamp(24px,5vw,56px)');
+      var ht = el('div', 'flex:1 1 360px;min-width:0;display:flex;flex-direction:column;gap:16px');
+      add(ht, el('div', EB + 'color:#3D4C70', 'Your AI readiness report · company of ' + size),
+        el('h1', 'margin:0;font-size:clamp(44px,6.4vw,88px);font-weight:800;letter-spacing:-.045em;line-height:.98', r.lvl[1] + '.'),
+        el('p', 'margin:0;max-width:560px;font-size:19px;line-height:1.55;color:#33415F', r.lvl[2]));
+      R.appendChild(add(head, ring, ht));
+      // dimensions
+      var sec = el('section', 'display:flex;flex-direction:column;gap:0');
+      add(sec, el('div', EB + 'color:#3D4C70;padding-bottom:16px', 'The five areas'));
+      r.dims.forEach(function (d) {
+        var row = el('div', 'display:flex;flex-wrap:wrap;gap:12px 32px;padding:24px 0;border-top:1px solid #C9D4EE');
+        var left = el('div', 'flex:1 1 260px;min-width:0;display:flex;flex-direction:column;gap:12px');
+        var top = el('div', 'display:flex;justify-content:space-between;align-items:baseline;gap:12px');
+        add(top, el('h2', 'margin:0;font-size:22px;font-weight:800;letter-spacing:-.02em', d.name), el('span', MONO + 'font-size:15px', d.pct + '%'));
+        var track = el('div', 'height:10px;border-radius:999px;background:#D5E2FF;overflow:hidden');
+        track.appendChild(el('div', 'height:100%;width:' + d.pct + '%;border-radius:999px;background:' + (d.band === 0 ? '#0A1A3F' : (d.band === 1 ? '#5B7BFF' : '#1B3BFF'))));
+        add(left, top, track, el('span', EB + 'font-size:11px;color:' + (d.band === 2 ? '#1B3BFF' : '#0A1A3F'), ['Needs attention first', 'Partly in place', 'A strength'][d.band]));
+        add(row, left, el('p', 'flex:1.4 1 320px;min-width:0;margin:0;font-size:16.5px;line-height:1.6;color:#33415F', DIMS[d.i].d[d.band]));
+        sec.appendChild(row);
+      });
+      R.appendChild(sec);
+      // what it means
+      var two = el('section', 'display:grid;grid-template-columns:repeat(auto-fit,minmax(min(320px,100%),1fr));gap:20px');
+      var w = el('div', 'padding:32px;border-radius:28px;background:#061230;color:#FFFFFF;display:flex;flex-direction:column;gap:12px');
+      add(w, el('div', EB + 'color:#A9B8DD', 'Where to start'), el('div', 'font-size:28px;font-weight:800;letter-spacing:-.03em;line-height:1.08', r.weakest.name), el('p', 'margin:0;font-size:16px;line-height:1.55;color:#C6D2EE', DIMS[r.weakest.i].why));
+      var st = el('div', 'padding:32px;border-radius:28px;background:#FFFFFF;border:1px solid #C9D4EE;display:flex;flex-direction:column;gap:12px');
+      add(st, el('div', EB + 'color:#1B3BFF', 'What you can build on'), el('div', 'font-size:28px;font-weight:800;letter-spacing:-.03em;line-height:1.08', r.strongest.pct > r.weakest.pct ? r.strongest.name : 'An even start'),
+        el('p', 'margin:0;font-size:16px;line-height:1.55;color:#3D4C70', r.strongest.pct > r.weakest.pct ? 'This is your strongest area at ' + r.strongest.pct + '%. Use it to pull the weaker areas up, not as a reason to skip them.' : 'All five areas scored the same, so there is no single weak link. Work through the plan below in order.'));
+      R.appendChild(add(two, w, st));
+      // plan
+      var plan = el('section', 'display:flex;flex-direction:column;gap:20px');
+      add(plan, el('div', EB + 'color:#3D4C70', 'Your 90-day plan, in order of priority'));
+      if (!r.gaps.length) {
+        plan.appendChild(el('p', 'margin:0;font-size:18px;line-height:1.6;color:#33415F', 'You chose the highest answer for every question. Your next gains are in depth: custom workflows built around your business and sharper measurement of what they return.'));
+      } else {
+        var grid = el('div', 'display:grid;grid-template-columns:repeat(auto-fit,minmax(min(280px,100%),1fr));gap:20px');
+        [['First 30 days', 0, 3], ['Days 31 to 60', 3, 6], ['Days 61 to 90', 6, 9]].forEach(function (p) {
+          var items = r.gaps.slice(p[1], p[2]); if (!items.length) { return; }
+          var card = el('div', 'padding:28px;border-radius:24px;background:#FFFFFF;border:1px solid #C9D4EE;display:flex;flex-direction:column;gap:16px');
+          card.appendChild(el('h2', 'margin:0;font-size:24px;font-weight:800;letter-spacing:-.02em', p[0]));
+          var ol = el('ol', 'margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:14px');
+          items.forEach(function (g) {
+            var li = el('li', 'display:flex;flex-direction:column;gap:4px;padding-top:14px;border-top:1px solid #DCE4F5');
+            add(li, el('span', EB + 'font-size:11px;color:#1B3BFF', DIMS[g.d].k), el('span', 'font-size:16px;line-height:1.5', g.fix));
+            ol.appendChild(li);
+          });
+          grid.appendChild(add(card, ol));
+        });
+        plan.appendChild(grid);
+      }
+      R.appendChild(plan);
+      // call to action
+      var cta = el('section', 'padding:clamp(28px,4vw,48px);border-radius:28px;background:#1B3BFF;color:#FFFFFF;display:flex;flex-wrap:wrap;gap:36px');
+      cta.className = 'noprint';
+      var cl = el('div', 'flex:1 1 320px;min-width:0;display:flex;flex-direction:column;gap:14px');
+      add(cl, el('div', EB + 'color:#E7EEFF', 'Suggested starting point'), el('h2', 'margin:0;font-size:clamp(30px,3.6vw,46px);font-weight:800;letter-spacing:-.035em;line-height:1.02', DIMS[r.weakest.i].svc),
+        el('p', 'margin:0;font-size:17px;line-height:1.55;color:#F0F4FF', 'Send me this report and I will go through it with you on a call: what I would fix first in your business, and what it would take. There is no charge for the review call.'));
+      var f = el('form', 'flex:1 1 320px;min-width:0;display:flex;flex-direction:column;gap:12px'); f.noValidate = true;
+      function field(name, label, type, auto) { var l = el('label', 'display:flex;flex-direction:column;gap:6px;font-size:14px;font-weight:600'); var i = el('input', 'font:inherit;font-weight:400;font-size:16px;color:#0A1A3F;background:#FFFFFF;border:1.5px solid #FFFFFF;border-radius:12px;padding:13px 16px;min-height:50px;width:100%'); i.type = type; i.name = name; i.autocomplete = auto; i.required = true; return add(l, el('span', '', label), i); }
+      var msg = el('div', 'font-size:15px;line-height:1.5'); msg.setAttribute('role', 'alert'); msg.hidden = true;
+      var sb = el('button', 'align-self:flex-start;min-height:54px;padding:0 28px;border-radius:999px;border:none;background:#FFFFFF;color:#0A1A3F;font:inherit;font-weight:600;font-size:17px;cursor:pointer', 'Send report and request a call'); sb.type = 'submit'; sb.className = 'btn';
+      add(f, field('name', 'Your name', 'text', 'name'), field('email', 'Work email', 'email', 'email'), field('company', 'Company', 'text', 'organization'), msg, sb);
+      f.addEventListener('submit', function (e) {
+        e.preventDefault(); msg.hidden = true;
+        var n = f.elements.name.value.trim(), em = f.elements.email.value.trim(), co = f.elements.company.value.trim();
+        if (!n || !co || !/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(em)) { msg.textContent = 'Please enter your name, a valid work email and your company.'; msg.hidden = false; return; }
+        sb.disabled = true; sb.textContent = 'Sending...';
+        fetch('https://formsubmit.co/ajax/dasachin@xdotai.in', { method: 'POST', headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+          body: JSON.stringify({ name: n, email: em, company: co, company_size: size, score: r.pct + ' / 100 (' + r.lvl[1] + ')', weakest_area: r.weakest.name, report: summary(r), _subject: 'AI readiness report: ' + co + ' scored ' + r.pct, _template: 'table', _captcha: 'false' }) })
+          .then(function (x) { return x.json().then(function (j) { return x.ok && String(j.success) === 'true'; }); })
+          .then(function (ok) {
+            if (ok) { f.textContent = ''; add(f, el('div', 'font-size:26px;font-weight:800;letter-spacing:-.02em', 'Report sent.'), el('p', 'margin:0;font-size:17px;line-height:1.55', 'Thank you, ' + n + '. I will read it and reply to you personally to set up the call.')); }
+            else { sb.disabled = false; sb.textContent = 'Send report and request a call'; msg.textContent = 'The report could not be sent. Please try again in a minute, or use the contact page.'; msg.hidden = false; }
+          })
+          .catch(function () { sb.disabled = false; sb.textContent = 'Send report and request a call'; msg.textContent = 'The report could not be sent. Please check your connection and try again.'; msg.hidden = false; });
+      });
+      R.appendChild(add(cta, cl, f));
+      // tools + method
+      var tools = el('div', 'display:flex;flex-wrap:wrap;gap:12px'); tools.className = 'noprint';
+      function tool(label, fn) { var b = el('button', 'min-height:46px;padding:0 20px;border-radius:999px;border:1.5px solid #0A1A3F;background:transparent;color:#0A1A3F;font:inherit;font-weight:600;font-size:15px;cursor:pointer', label); b.type = 'button'; b.addEventListener('click', function () { fn(b); }); return b; }
+      add(tools, tool('Print or save as PDF', function () { window.print(); }),
+        tool('Copy report as text', function (b) { var t = summary(r); (navigator.clipboard ? navigator.clipboard.writeText(t) : Promise.reject()).then(function () { b.textContent = 'Copied'; }, function () { b.textContent = 'Copy not available'; }); }),
+        tool('Retake the assessment', function () { ans = []; cur = 0; save(); show('as-intro'); }));
+      R.appendChild(tools);
+      R.appendChild(el('p', 'margin:0;max-width:720px;font-size:14px;line-height:1.6;color:#3D4C70', 'How this is scored: each answer scores 0 to 3. Your overall score is your total out of ' + (QS.length * 3) + ', shown out of 100, and each area is scored the same way from its three questions. The plan lists the actions for your lowest answers first. This is a self-assessment based only on your answers, not an audit of your company.'));
+      show('as-report');
+    }
+    if (ans.length === QS.length && ans.every(function (a) { return a >= 0 && a <= 3; })) { report(); }
+  })();
 })();

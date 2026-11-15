@@ -10,7 +10,7 @@ lg=Image.open('/mnt/user-data/uploads/5b89d60f-image.png').convert('RGBA'); lg.s
 mark=lg.crop((8,0,76,106)); fav=Image.new('RGBA',(128,128),(255,255,255,255)); m2=mark.resize((int(68*112/106),112),Image.LANCZOS); fav.alpha_composite(m2,((128-m2.size[0])//2,8)); fav.convert('RGB').save(OUT+'/assets/favicon.png',optimize=True)
 if os.path.exists(OUT+'/assets/favicon.svg'): os.remove(OUT+'/assets/favicon.svg')
 
-NAV=[('/services','Services'),('/about','About'),('/books','Books'),('/blog','Blog'),('/#play','Play')]
+NAV=[('/services','Services'),('/ai-readiness','AI readiness'),('/about','About'),('/books','Books'),('/blog','Blog')]
 links=''.join('\n    <a href="%s">%s</a>'%x for x in NAV)
 new_header=f'''<!-- NAV -->
 <header style="position: relative; z-index: 5; max-width: 1200px; margin: 0 auto; padding: 18px clamp(20px, 4vw, 40px); display: flex; align-items: center; justify-content: space-between; gap: 20px">
@@ -36,7 +36,7 @@ new_footer=f'''<!-- FOOTER -->
         <p style="margin: 0; font-size: 15px; line-height: 1.55">AI trainer, coach and consultant. Problem first, solution second.</p>
       </div>
       <nav aria-label="Footer" style="display: flex; flex-wrap: wrap; gap: 14px 28px; align-content: flex-start; font-size: 16px; font-weight: 600">
-        <a href="/services">Services</a><a href="/about">About</a><a href="/books">Books</a><a href="/blog">Blog</a><a href="/contact">Contact</a>
+        <a href="/services">Services</a><a href="/ai-readiness">AI readiness</a><a href="/about">About</a><a href="/books">Books</a><a href="/blog">Blog</a><a href="/contact">Contact</a>
       </nav>
       <nav aria-label="Social" style="display: flex; flex-wrap: wrap; gap: 14px 28px; align-content: flex-start; font-size: 16px; font-weight: 600">
         <a href="https://www.linkedin.com/in/dasachin/" rel="noopener me">LinkedIn</a><a href="https://medium.com/@dasachin" rel="noopener me">Medium</a><a href="https://www.instagram.com/xdotai.in" rel="noopener me">Instagram</a><a href="https://xdotai.in" rel="noopener">X DOT AI</a>
@@ -93,6 +93,7 @@ blog_sec=f'''<section style="background: #FFFFFF; border-top: 1px solid #DCE4F5"
   </div>
 </section>
 '''
+S['room']=('<!-- AI READINESS TEASER -->\n<section id="room" style="background: #E7EEFF">\n  <div style="max-width: 1200px; margin: 0 auto; padding: 88px clamp(20px, 4vw, 40px); display: flex; flex-wrap: wrap; align-items: center; gap: 48px">\n    <div class="rv" style="flex: 1.3 1 460px; min-width: 0; display: flex; flex-direction: column; gap: 22px">\n      '+eyebrow('Free assessment · 5 minutes','#33415F')+'\n      <h2 style="margin: 0; font-size: clamp(38px, 5.2vw, 72px); font-weight: 800; letter-spacing: -0.04em; line-height: 1; text-wrap: balance">How AI-ready is your <span style="'+SERIF+'; font-style: italic; font-weight: 400; letter-spacing: -0.01em; color: #1B3BFF">company?</span></h2>\n      <p style="margin: 0; max-width: 560px; font-size: 18px; line-height: 1.55; color: #33415F">Fifteen questions about how your business works today. You get a score for five areas, what is holding you back, and a 90-day plan in order of priority.</p>\n      <a class="btn" href="/ai-readiness" style="align-self: flex-start; display: inline-flex; align-items: center; gap: 12px; min-height: 58px; padding: 0 30px; border-radius: 999px; background: #1B3BFF; color: #FFFFFF; text-decoration: none; font-weight: 600; font-size: 18px">Take the assessment</a>\n    </div>\n    <ul class="rv" style="flex: 1 1 320px; min-width: 0; margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column; border-top: 2px solid #0A1A3F">\n'+''.join('      <li style="display: flex; justify-content: space-between; align-items: baseline; gap: 16px; padding: 18px 0; border-bottom: 1px solid #A9BCEB; font-size: 19px; font-weight: 600"><span>%s</span><span style="'%n+MONO+'; font-size: 12px; letter-spacing: 0.12em; color: #1B3BFF">0%d</span></li>\n'%(i+1) for i,n in enumerate(['Leadership and strategy','Problem clarity','Data, tools and workflow','People and skills','Guardrails and measurement']))+'    </ul>\n  </div>\n</section>\n\n')
 # ---------- head helper
 head=abs_(head).replace('<link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">','<link rel="icon" href="/assets/favicon.png" type="image/png">\n<link rel="apple-touch-icon" href="/assets/favicon.png">\n<link rel="alternate" type="application/rss+xml" title="Da Sachin Sharma on Medium" href="https://medium.com/feed/@dasachin">')
 assert 'favicon.png' in head
@@ -228,12 +229,15 @@ page('about','About Da Sachin Sharma | AI Trainer, Coach and Consultant','Da Sac
      phero('About','Da Sachin','Sharma.','AI trainer, coach and consultant. Founder of X DOT AI, Guest Faculty at IICT Mumbai and author of five books.')+S['about']+S['method']+S['proof']+S['cta'],typ='AboutPage')
 page('books','Books by Da Sachin Sharma | Prompt DOT AI, Creativity DOT AI and more','Five books by Da Sachin Sharma: Prompt DOT AI, Creativity DOT AI, The Warrior Who Put Down His Bow, Why You Do This To Me and Emotional Gully. Read about each and buy on Amazon.',
      phero('Publications','Five books,','three on AI.','From the craft of prompting to unsent love letters and Hindi poetry. Each one is available on Amazon.')+books_full+S['cta'],extra=books)
+_at='How AI-Ready Is Your Company? Free AI Readiness Assessment | Da Sachin Sharma'; _ad='A free 15-question AI readiness assessment for companies in India. Get a score across five areas, your biggest gaps and a 90-day plan, from AI trainer and consultant Da Sachin Sharma.'
+write('ai-readiness.html',mkhead(_at,_ad,'ai-readiness',wp(_at,_ad,'ai-readiness'))+OPEN+open(P+'assess.html').read()+S['cta']+CLOSE+TAIL); PAGES.append('ai-readiness')
 # contact: rebuild with new chrome
 c=open(P+'contact.html').read()
 ct='Contact Da Sachin Sharma | AI Training, Coaching and Consulting'; cd='Tell Da Sachin Sharma the real problem you want AI to solve. Enquire about AI training for teams, consulting for managements, coaching for leaders or custom AI tools.'
 write('contact.html',mkhead(ct,cd,'contact',wp(ct,cd,'contact','ContactPage'))+OPEN+c+CLOSE+TAIL); PAGES.append('contact')
 # ---------- css
-css2=open(OUT+'/assets/site.css').read()+STICK_CSS+""".mnav{display:none;position:static}.mnav summary{cursor:pointer}.mnav a:hover{background:#E7EEFF}
+css2=open(OUT+'/assets/site.css').read()+STICK_CSS+""".ar-dim{display:flex;flex-direction:column;gap:4px;padding:16px 18px;border-radius:16px;background:#F5F8FD;border:1px solid #DCE4F5;font-size:16px}.ar-dim span{font-size:14.5px;color:#3D4C70}\n@media print{header,footer,.noprint,#contact,.skip{display:none !important}#ar-app{box-shadow:none !important;border:none !important}body{background:#fff !important}}\n@media print{header,footer,#contact,.noprint,.skip{display:none !important}body{background:#fff}}
+.mnav{display:none;position:static}.mnav summary{cursor:pointer}.mnav a:hover{background:#E7EEFF}
 @media (max-width:760px){.mnav{display:block}}
 .prose iframe{display:block;width:100%;aspect-ratio:16/9;border:0;border-radius:16px;margin:2em 0}
 .card{color:#0A1A3F;text-decoration:none;transition:transform .25s ease,box-shadow .25s ease}.card:hover{color:#0A1A3F;transform:translateY(-6px);box-shadow:0 28px 50px -28px rgba(10,26,63,.45)}
